@@ -1,0 +1,724 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Detalhes – LombongoOnline</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Nunito:wght@400;600;700;900&display=swap" rel="stylesheet">
+<style>
+  :root { --gold:#FFD700; --gold2:#FFA500; --red:#CC0000; --dark:#0a0a0a; --card:#161616; --text:#f0f0f0; --muted:#888; }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  body{background:var(--dark);color:var(--text);font-family:'Nunito',sans-serif;overflow-x:hidden;}
+
+  nav{
+    position:sticky;top:0;z-index:100;background:rgba(10,10,10,0.95);
+    backdrop-filter:blur(12px);border-bottom:1px solid #222;
+    display:flex;align-items:center;justify-content:space-between;padding:14px 24px;
+  }
+  .logo{font-family:'Bebas Neue',sans-serif;font-size:1.8rem;letter-spacing:2px;background:linear-gradient(90deg,var(--gold),var(--gold2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;text-decoration:none;}
+  .logo span{-webkit-text-fill-color:var(--red);}
+  nav a.back{color:var(--muted);text-decoration:none;font-size:0.8rem;font-weight:700;letter-spacing:1px;text-transform:uppercase;transition:color 0.2s;}
+  nav a.back:hover{color:var(--gold);}
+
+  .loading{display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:60vh;gap:16px;}
+  .spinner{width:48px;height:48px;border:4px solid #222;border-top-color:var(--gold);border-radius:50%;animation:spin 0.8s linear infinite;}
+  @keyframes spin{to{transform:rotate(360deg)}}
+  .loading p{color:var(--muted);font-size:0.9rem;}
+
+  .detail-wrap{max-width:800px;margin:0 auto;padding:40px 24px 60px;}
+
+  .detail-header{text-align:center;margin-bottom:40px;}
+  .detail-emoji{font-size:4rem;display:block;margin-bottom:12px;}
+  .detail-name{font-family:'Bebas Neue',sans-serif;font-size:clamp(2.5rem,8vw,4rem);letter-spacing:3px;background:linear-gradient(135deg,#FFD700,#FFA500);-webkit-background-clip:text;-webkit-text-fill-color:transparent;}
+  .detail-category{display:inline-block;background:rgba(255,215,0,0.1);color:var(--gold);font-size:0.78rem;font-weight:700;letter-spacing:1px;padding:4px 14px;border-radius:999px;border:1px solid rgba(255,215,0,0.2);margin:10px 0 16px;}
+  .detail-desc{color:#bbb;font-size:1rem;line-height:1.7;max-width:600px;margin:0 auto;}
+
+  /* STARS */
+  .stars-block{display:flex;flex-direction:column;align-items:center;margin:28px 0;}
+  .stars-big{font-size:2rem;letter-spacing:4px;color:var(--gold);}
+  .stars-num{font-family:'Bebas Neue',sans-serif;font-size:3rem;color:var(--gold);line-height:1;}
+  .stars-label{color:var(--muted);font-size:0.8rem;letter-spacing:2px;text-transform:uppercase;margin-top:4px;}
+
+  /* STATS GRID */
+  .stats-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:14px;margin:28px 0;}
+  .stat-card{background:var(--card);border:1px solid #222;border-radius:14px;padding:20px 16px;text-align:center;}
+  .stat-icon{font-size:1.6rem;margin-bottom:8px;display:block;}
+  .stat-value{font-family:'Bebas Neue',sans-serif;font-size:1.8rem;color:var(--gold);display:block;line-height:1;}
+  .stat-label{font-size:0.72rem;color:var(--muted);letter-spacing:1px;text-transform:uppercase;margin-top:4px;}
+
+  /* PAYMENT INFO */
+  .section-title{font-family:'Bebas Neue',sans-serif;font-size:1.6rem;letter-spacing:2px;color:var(--gold);border-left:4px solid var(--red);padding-left:12px;margin:32px 0 16px;}
+  .pay-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:12px;}
+  .pay-item{background:var(--card);border:1px solid #1e1e1e;border-radius:12px;padding:16px;text-align:center;}
+  .pay-icon{font-size:1.4rem;display:block;margin-bottom:6px;}
+  .pay-label{font-size:0.72rem;color:var(--muted);letter-spacing:1px;text-transform:uppercase;margin-bottom:4px;}
+  .pay-value{font-weight:900;font-size:0.9rem;color:var(--text);}
+  .pay-crypto{color:var(--gold);}
+
+  /* PROS/CONS */
+  .pros-cons{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:8px;}
+  .pros,.cons{background:var(--card);border-radius:12px;padding:18px;}
+  .pros{border:1px solid #1a3a1a;}
+  .cons{border:1px solid #3a1a1a;}
+  .pros h4{color:#4CAF50;font-size:0.85rem;letter-spacing:2px;text-transform:uppercase;margin-bottom:10px;}
+  .cons h4{color:var(--red);font-size:0.85rem;letter-spacing:2px;text-transform:uppercase;margin-bottom:10px;}
+  .pros li,.cons li{color:#aaa;font-size:0.85rem;line-height:1.6;margin-left:16px;}
+
+  /* CTA */
+  .cta-box{background:linear-gradient(135deg,#1a1500,#0f0f0f);border:1px solid #333;border-radius:16px;padding:32px;text-align:center;margin-top:36px;}
+  .cta-box h3{font-family:'Bebas Neue',sans-serif;font-size:1.8rem;letter-spacing:2px;margin-bottom:8px;}
+  .cta-box p{color:var(--muted);font-size:0.9rem;margin-bottom:20px;}
+  .btn-reg{display:inline-block;background:linear-gradient(135deg,var(--gold),var(--gold2));color:#000;font-weight:900;font-size:1rem;padding:14px 36px;border-radius:999px;text-decoration:none;box-shadow:0 0 30px rgba(255,165,0,0.3);transition:transform 0.2s,box-shadow 0.2s;}
+  .btn-reg:hover{transform:translateY(-3px);box-shadow:0 0 50px rgba(255,165,0,0.5);}
+
+  /* AD */
+  .ad-box{background:#111;border:none;border-radius:12px;display:flex;align-items:center;justify-content:center;color:#333;font-size:0.72rem;letter-spacing:2px;text-transform:uppercase;margin:28px auto;}
+  .ad-mid{height:250px;max-width:300px;}
+
+  footer{background:#0d0d0d;border-top:1px solid #1a1a1a;text-align:center;padding:28px 24px;color:var(--muted);font-size:0.8rem;}
+  .f-logo{font-family:'Bebas Neue',sans-serif;font-size:1.6rem;background:linear-gradient(90deg,var(--gold),var(--gold2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;display:block;margin-bottom:6px;}
+  footer a{color:var(--gold);text-decoration:none;}
+
+  @media(max-width:500px){.pros-cons{grid-template-columns:1fr;}}
+
+  /* APOIA-ME BUTTON BAR */
+  .apoiame-bar{background:#111;border-bottom:1px solid #1a1a1a;padding:8px 24px;display:flex;align-items:center;justify-content:space-between;}
+  .btn-apoiame{display:inline-flex;align-items:center;gap:6px;background:linear-gradient(135deg,#FFD700,#FFA500);color:#000;font-weight:900;font-size:0.72rem;letter-spacing:1px;text-transform:uppercase;padding:6px 15px;border-radius:999px;text-decoration:none;box-shadow:0 0 18px rgba(255,165,0,0.3);transition:transform 0.2s,box-shadow 0.2s;}
+  .btn-apoiame:hover{transform:translateY(-2px);box-shadow:0 0 30px rgba(255,165,0,0.5);}
+</style>
+
+  <!-- MONETAG ONCLICK -->
+  <script>(function(s){s.dataset.zone='10951387',s.src='https://al5sm.com/tag.min.js'})([document.documentElement, document.body].filter(Boolean).pop().appendChild(document.createElement('script')))</script>
+<meta name="referrer" content="no-referrer-when-downgrade" />
+<script>(function(s){s.dataset.zone='10951387',s.src='https://al5sm.com/tag.min.js'})([document.documentElement, document.body].filter(Boolean).pop().appendChild(document.createElement('script')))</script>
+<script src="https://5gvci.com/act/files/tag.min.js?z=10951410" data-cfasync="false" async></script>
+<script>(function(s){s.dataset.zone='10958760',s.src='https://n6wxm.com/vignette.min.js'})([document.documentElement, document.body].filter(Boolean).pop().appendChild(document.createElement('script')))</script>
+<script>(function(s){s.dataset.zone='10985009',s.src='https://nap5k.com/tag.min.js'})([document.documentElement, document.body].filter(Boolean).pop().appendChild(document.createElement('script')))</script>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="logo">Lombongo<span>Online</span></a>
+  <a href="plataformas.html" class="back">← Plataformas</a>
+</nav>
+
+<!-- APOIA-ME BAR -->
+<div class="apoiame-bar">
+  <a href="https://omg10.com/4/10959986" target="_blank" class="btn-apoiame">❤️ Apoia-me 🙏</a>
+  <a href="carteira-digital.html" target="_blank" class="btn-apoiame">💳 Carteira Digital</a>
+</div>
+
+
+<div id="loading" class="loading">
+  <div class="spinner"></div>
+  <p>A carregar informações da plataforma...</p>
+</div>
+
+<div id="content" class="detail-wrap" style="display:none;"></div>
+
+<footer>
+  <span class="f-logo">LombongoOnline</span>
+  <p><a href="index.html">Início</a> · <a href="plataformas.html">Plataformas</a></p>
+  <p style="margin-top:10px;font-size:0.7rem;color:#333;">© 2026 LombongoOnline · Luanda, Angola</p>
+</footer>
+
+<script>
+const platforms = {
+  freecash: {
+    emoji: "🎁",
+    name: "Freecash",
+    category: "GPT & Ofertas",
+    desc: "O Freecash é uma das plataformas GPT que mais paga no mundo. Completa ofertas, questionários, instala apps e ganha dinheiro real que podes sacar em criptomoeda ou gift cards.",
+    founded: "2020",
+    members: "+2 Milhões",
+    totalPaid: "+$40 Milhões",
+    rating: "4.7",
+    stars: "★★★★★",
+    refLink: "https://freecash.com/r/2I72DZ",
+    payment: {
+      metodos: "Bitcoin, Ethereum, USDT, LTC, Gift Cards",
+      minSaque: "$0.10",
+      velocidade: "Instantâneo",
+      cripto: true,
+      frequencia: "A qualquer hora"
+    },
+    pros: ["Paga muito bem", "Saque instantâneo", "Centenas de ofertas", "Suporte em cripto"],
+    cons: ["Algumas ofertas não disponíveis em Angola", "Verificação pode ser exigida"]
+  },
+  timebucks: {
+    emoji: "⏰",
+    name: "TimeBucks",
+    category: "GPT & Ofertas",
+    desc: "O TimeBucks paga por ver anúncios, fazer pesquisas, seguir nas redes sociais e tem um sistema de bónus de streak diário. Muito compatível com Angola.",
+    founded: "2016",
+    members: "+3 Milhões",
+    totalPaid: "+$8 Milhões",
+    rating: "4.2",
+    stars: "★★★★☆",
+    refLink: "https://timebucks.com/?refID=226131011",
+    payment: {
+      metodos: "Bitcoin, Tether USDT, AirTM",
+      minSaque: "$1.00",
+      velocidade: "1-3 dias úteis",
+      cripto: true,
+      frequencia: "Semanalmente"
+    },
+    pros: ["Compatível com Angola", "Bónus de streak diário", "Múltiplas formas de ganhar", "Interface simples"],
+    cons: ["Mínimo de $1 para sacar", "Alguns questionários não disponíveis"]
+  },
+  cointiply: {
+    emoji: "🪙",
+    name: "Cointiply",
+    category: "Faucet & PTC",
+    desc: "O Cointiply é uma plataforma completa de ganho em Bitcoin. Inclui faucet gratuito, visualização de anúncios, ofertas e questionários. Saca via FaucetPay.",
+    founded: "2018",
+    members: "+1 Milhão",
+    totalPaid: "+$3 Milhões",
+    rating: "4.3",
+    stars: "★★★★☆",
+    refLink: "https://cointiply.mobi/Z6N7B5",
+    payment: {
+      metodos: "Bitcoin (via FaucetPay ou directo)",
+      minSaque: "35,000 coins (~$0.35)",
+      velocidade: "Imediato via FaucetPay",
+      cripto: true,
+      frequencia: "A qualquer hora"
+    },
+    pros: ["Faucet gratuito a cada hora", "Bónus de fidelidade diário", "Variedade de tarefas", "Paga em Bitcoin"],
+    cons: ["Interface um pouco antiga", "Ofertas limitadas por país"]
+  },
+  firefaucet: {
+    emoji: "🔥",
+    name: "FireFaucet",
+    category: "Faucet Auto",
+    desc: "O FireFaucet tem um sistema de faucet automático único — ganha cripto 24 horas por dia mesmo quando não estás no computador. Suporta mais de 10 criptomoedas.",
+    founded: "2019",
+    members: "+500 Mil",
+    totalPaid: "+$1 Milhão",
+    rating: "4.1",
+    stars: "★★★★☆",
+    refLink: "https://firefaucet.win/ref/1551698",
+    payment: {
+      metodos: "Bitcoin, Litecoin, Dogecoin, Ethereum e mais",
+      minSaque: "Varia por cripto",
+      velocidade: "Imediato",
+      cripto: true,
+      frequencia: "A qualquer hora"
+    },
+    pros: ["Auto-faucet 24h", "Suporta muitas criptomoedas", "Completamente automático", "Interface moderna"],
+    cons: ["Precisa de acumular ACP (pontos)", "Ganhos lentos no início"]
+  },
+  faucetpay: {
+    emoji: "💳",
+    name: "FaucetPay",
+    category: "Carteira & Faucet",
+    desc: "O FaucetPay é a principal micro-carteira cripto para quem usa faucets. Recebe de dezenas de faucets, faz faucet próprio e converte facilmente para a Binance.",
+    founded: "2019",
+    members: "+2 Milhões",
+    totalPaid: "+$10 Milhões",
+    rating: "4.2",
+    stars: "★★★★☆",
+    refLink: "https://faucetpay.io/?r=9855520",
+    payment: {
+      metodos: "Bitcoin, Litecoin, DOGE, ETH, USDT e mais",
+      minSaque: "Varia por cripto (muito baixo)",
+      velocidade: "Imediato",
+      cripto: true,
+      frequencia: "A qualquer hora"
+    },
+    pros: ["Hub central para todos os faucets", "Suporta muitas moedas", "Fácil de transferir para Binance", "Faucet integrado"],
+    cons: ["Não é uma exchange completa", "Para saques grandes usa Binance"]
+  },
+  adbtc: {
+    emoji: "📢",
+    name: "AdBTC",
+    category: "PTC Bitcoin",
+    desc: "O AdBTC é uma plataforma PTC (Paid-To-Click) onde ganhas Bitcoin por ver anúncios durante 5 a 60 segundos. Simples, directo e sem complicações.",
+    founded: "2015",
+    members: "+800 Mil",
+    totalPaid: "+$2 Milhões",
+    rating: "3.8",
+    stars: "★★★☆☆",
+    refLink: "https://r.adbtc.top/4160455",
+    payment: {
+      metodos: "Bitcoin directo ou via FaucetPay",
+      minSaque: "10,000 satoshis",
+      velocidade: "1-24 horas",
+      cripto: true,
+      frequencia: "Diariamente"
+    },
+    pros: ["Existe desde 2015", "Paga em Bitcoin", "Fácil de usar", "Sem requisitos mínimos"],
+    cons: ["Poucos anúncios disponíveis por dia", "Ganhos pequenos por clique"]
+  },
+  btcclicks: {
+    emoji: "🖱️",
+    name: "BTCClicks",
+    category: "PTC Bitcoin",
+    desc: "Um dos PTC em Bitcoin mais antigos e confiáveis. Clica em anúncios, ganha satoshis e saca directamente para a tua carteira Bitcoin.",
+    founded: "2013",
+    members: "+600 Mil",
+    totalPaid: "+$1.5 Milhões",
+    rating: "3.5",
+    stars: "★★★☆☆",
+    refLink: "https://btcclicks.com",
+    payment: {
+      metodos: "Bitcoin",
+      minSaque: "0.00010000 BTC",
+      velocidade: "Até 24 horas",
+      cripto: true,
+      frequencia: "Diariamente"
+    },
+    pros: ["Existe desde 2013", "Muito confiável", "Paga em Bitcoin", "Sem custos de registo"],
+    cons: ["Interface desatualizada", "Poucos anúncios por dia", "Ganhos lentos"]
+  },
+  ysense: {
+    emoji: "📊",
+    name: "ySense",
+    category: "GPT & Questionários",
+    desc: "O ySense (antigo ClixSense) é uma das plataformas GPT mais antigas do mundo. Completa questionários, tarefas e ofertas e ganha em dólares reais.",
+    founded: "2007",
+    members: "+10 Milhões",
+    totalPaid: "+$35 Milhões",
+    rating: "4.0",
+    stars: "★★★★☆",
+    refLink: "https://www.ysense.com/?rb=199889080",
+    payment: {
+      metodos: "PayPal, Skrill, Gift Cards, Bitcoin (via Skrill)",
+      minSaque: "$10.00",
+      velocidade: "2-7 dias úteis",
+      cripto: false,
+      frequencia: "Semanalmente"
+    },
+    pros: ["Existe desde 2007", "Muito confiável", "+10 milhões de membros", "Muitos questionários"],
+    cons: ["Mínimo de $10 para sacar", "Cripto não directo", "Alguns questionários não disponíveis em Angola"]
+  },
+  swagbucks: {
+    emoji: "🐝",
+    name: "Swagbucks",
+    category: "GPT & Recompensas",
+    desc: "O Swagbucks é uma das maiores plataformas de recompensas online. Ganha SB (Swag Bucks) fazendo pesquisas, vendo vídeos, comprando online e completando ofertas.",
+    founded: "2008",
+    members: "+20 Milhões",
+    totalPaid: "+$700 Milhões",
+    rating: "4.3",
+    stars: "★★★★☆",
+    refLink: "https://www.swagbucks.com/p/register?rb=199913440&rp=1",
+    payment: {
+      metodos: "PayPal, Gift Cards Amazon, Walmart e outros",
+      minSaque: "$3.00 (300 SB)",
+      velocidade: "1-10 dias úteis",
+      cripto: false,
+      frequencia: "A qualquer hora"
+    },
+    pros: ["Existe desde 2008", "+$700M já pagos", "Muitas formas de ganhar", "Mínimo baixo ($3)"],
+    cons: ["Sem pagamento directo em cripto", "Alguns recursos limitados fora dos EUA"]
+  },
+  gg2u: {
+    emoji: "💎",
+    name: "GG2U",
+    category: "GPT Simples",
+    desc: "O GG2U é uma plataforma GPT simples e directa. Completa tarefas fáceis, ofertas e questionários e ganha dinheiro real sem complicações desnecessárias.",
+    founded: "2012",
+    members: "+300 Mil",
+    totalPaid: "+$500 Mil",
+    rating: "3.7",
+    stars: "★★★☆☆",
+    refLink: "https://premium.gg2u.org?referrer=mariosantos0607",
+    payment: {
+      metodos: "PayPal, Bitcoin, Litecoin, Skrill",
+      minSaque: "$2.00",
+      velocidade: "1-5 dias úteis",
+      cripto: true,
+      frequencia: "Semanalmente"
+    },
+    pros: ["Paga em cripto", "Mínimo baixo ($2)", "Simples de usar", "Existe desde 2012"],
+    cons: ["Comunidade pequena", "Menos ofertas que os grandes concorrentes"]
+  },
+  rewardingways: {
+    emoji: "🏆",
+    name: "RewardingWays",
+    category: "GPT Variado",
+    desc: "O RewardingWays oferece uma grande variedade de formas de ganhar: ofertas, jogos, questionários, vídeos e muito mais. Paga em cripto e PayPal.",
+    founded: "2012",
+    members: "+400 Mil",
+    totalPaid: "+$1 Milhão",
+    rating: "3.8",
+    stars: "★★★☆☆",
+    refLink: "https://www.rewardingways.com",
+    payment: {
+      metodos: "PayPal, Bitcoin, Litecoin, Ethereum",
+      minSaque: "$1.00",
+      velocidade: "1-3 dias úteis",
+      cripto: true,
+      frequencia: "Diariamente"
+    },
+    pros: ["Mínimo de $1 muito baixo", "Paga em cripto", "Variedade de tarefas", "Activo desde 2012"],
+    cons: ["Interface desatualizada", "Tráfego limitado em Angola"]
+  },
+  paidwork: {
+    emoji: "💼",
+    name: "Paidwork",
+    category: "Tarefas Diárias",
+    desc: "O Paidwork é uma plataforma moderna de tarefas diárias. Interface limpa, tarefas simples e pagamentos frequentes. Boa opção para começar.",
+    founded: "2020",
+    members: "+1 Milhão",
+    totalPaid: "+$2 Milhões",
+    rating: "4.1",
+    stars: "★★★★☆",
+    refLink: "https://www.paidwork.com",
+    payment: {
+      metodos: "Bitcoin, Ethereum, USDT, PayPal",
+      minSaque: "$1.00",
+      velocidade: "Imediato a 24h",
+      cripto: true,
+      frequencia: "Diariamente"
+    },
+    pros: ["Interface moderna e bonita", "Paga em cripto", "Mínimo baixo", "Tarefas diárias"],
+    cons: ["Plataforma relativamente nova", "Menos ofertas que os veteranos"]
+  },
+  honeygain: {
+    emoji: "🐝",
+    name: "Honeygain",
+    category: "Ganho Passivo",
+    desc: "O Honeygain paga-te por partilhar a tua ligação à internet. Instala a app, deixa correr em segundo plano e ganha dinheiro passivamente todos os dias.",
+    founded: "2018",
+    members: "+2 Milhões",
+    totalPaid: "+$5 Milhões",
+    rating: "3.9",
+    stars: "★★★☆☆",
+    refLink: "https://join.honeygain.com/MARIO368FD",
+    payment: {
+      metodos: "PayPal, Bitcoin, JMPT Token",
+      minSaque: "$20.00",
+      velocidade: "1-5 dias úteis",
+      cripto: true,
+      frequencia: "Quando atingir mínimo"
+    },
+    pros: ["100% passivo", "Sem esforço", "Compatível com Android", "Paga em Bitcoin"],
+    cons: ["Mínimo alto ($20)", "Ganhos lentos com internet lenta", "Depende da qualidade da conexão"]
+  },
+  peer2profit: {
+    emoji: "📡",
+    name: "Peer2Profit",
+    category: "Ganho Passivo",
+    desc: "O Peer2Profit funciona de forma semelhante ao Honeygain. Partilha a tua largura de banda de internet e ganha cripto passivamente todos os dias.",
+    founded: "2019",
+    members: "+500 Mil",
+    totalPaid: "+$1 Milhão",
+    rating: "3.7",
+    stars: "★★★☆☆",
+    refLink: "https://peer2profit.com",
+    payment: {
+      metodos: "USDT, Bitcoin, Ethereum, TRX",
+      minSaque: "$2.00",
+      velocidade: "Imediato",
+      cripto: true,
+      frequencia: "A qualquer hora"
+    },
+    pros: ["Mínimo baixo ($2)", "Paga em cripto", "Passivo total", "Fácil de instalar"],
+    cons: ["Ganhos dependem da velocidade da internet", "Comunidade menor"]
+  },
+  packetstream: {
+    emoji: "📦",
+    name: "PacketStream",
+    category: "Ganho Passivo",
+    desc: "O PacketStream paga-te por partilhar a tua largura de banda. Totalmente automático — instala uma vez e ganha todos os meses.",
+    founded: "2018",
+    members: "+300 Mil",
+    totalPaid: "+$800 Mil",
+    rating: "3.5",
+    stars: "★★★☆☆",
+    refLink: "https://packetstream.io",
+    payment: {
+      metodos: "PayPal",
+      minSaque: "$5.00",
+      velocidade: "Mensal",
+      cripto: false,
+      frequencia: "Mensalmente"
+    },
+    pros: ["Totalmente passivo", "Fácil instalação", "Pagamento mensal automático"],
+    cons: ["Sem pagamento em cripto", "Mínimo $5", "Ganhos baixos com internet lenta"]
+  },
+  repocket: {
+    emoji: "🔌",
+    name: "Repocket",
+    category: "Ganho Passivo",
+    desc: "O Repocket é uma alternativa passiva que monetiza a tua ligação à internet. Disponível para Android, Windows e Mac. Ganhos diários automáticos.",
+    founded: "2021",
+    members: "+200 Mil",
+    totalPaid: "+$500 Mil",
+    rating: "3.8",
+    stars: "★★★☆☆",
+    refLink: "https://repocket.co",
+    payment: {
+      metodos: "PayPal, Bitcoin, Ethereum, USDT",
+      minSaque: "$20.00",
+      velocidade: "1-3 dias úteis",
+      cripto: true,
+      frequencia: "Quando atingir mínimo"
+    },
+    pros: ["Paga em cripto", "Disponível para Android", "Passivo total", "Interface moderna"],
+    cons: ["Mínimo alto ($20)", "Plataforma nova", "Ganhos lentos"]
+  },
+  jumptask: {
+    emoji: "⚡",
+    name: "JumpTask",
+    category: "Microtarefas",
+    desc: "O JumpTask conecta trabalhadores a microtarefas simples: classificar imagens, validar dados, fazer pesquisas rápidas. Paga em cripto JMPT.",
+    founded: "2021",
+    members: "+800 Mil",
+    totalPaid: "+$2 Milhões",
+    rating: "3.9",
+    stars: "★★★☆☆",
+    refLink: "https://www.jumptask.io",
+    payment: {
+      metodos: "JMPT Token (cripto), USDT",
+      minSaque: "$1.00",
+      velocidade: "Imediato",
+      cripto: true,
+      frequencia: "A qualquer hora"
+    },
+    pros: ["Paga em cripto", "Mínimo muito baixo", "Tarefas simples no telemóvel", "Pagamento imediato"],
+    cons: ["Token JMPT pode variar de valor", "Nem sempre há muitas tarefas disponíveis"]
+  },
+  mistplay: {
+    emoji: "🎮",
+    name: "Mistplay",
+    category: "Jogar e Ganhar",
+    desc: "O Mistplay paga-te por jogar jogos para Android. Quanto mais jogas, mais unidades ganhas e mais podes sacar em gift cards ou dinheiro.",
+    founded: "2015",
+    members: "+20 Milhões",
+    totalPaid: "+$75 Milhões",
+    rating: "4.2",
+    stars: "★★★★☆",
+    refLink: "https://www.mistplay.com",
+    payment: {
+      metodos: "Gift Cards Amazon, Google Play, PayPal",
+      minSaque: "Varia por prémio",
+      velocidade: "1-7 dias úteis",
+      cripto: false,
+      frequencia: "Quando atingir mínimo"
+    },
+    pros: ["Divertido de usar", "+20 milhões de utilizadores", "+$75M pagos", "Só precisas de jogar"],
+    cons: ["Sem pagamento em cripto", "Disponível só para Android", "Alguns jogos podem não estar em Angola"]
+  },
+  appnana: {
+    emoji: "📲",
+    name: "Appnana",
+    category: "Testar Apps",
+    desc: "O Appnana paga-te para instalares e testares novas apps e jogos. Ganhas nanas (pontos) que convertes em gift cards ou dinheiro.",
+    founded: "2012",
+    members: "+10 Milhões",
+    totalPaid: "+$3 Milhões",
+    rating: "3.8",
+    stars: "★★★☆☆",
+    refLink: "https://appnana.com",
+    payment: {
+      metodos: "Gift Cards Amazon, iTunes, Google Play, PayPal",
+      minSaque: "45,000 nanas",
+      velocidade: "Imediato",
+      cripto: false,
+      frequencia: "A qualquer hora"
+    },
+    pros: ["Existe desde 2012", "+10M utilizadores", "Fácil de usar", "Sem requisitos de país"],
+    cons: ["Sem pagamento em cripto", "Ganhos em pontos, não em dinheiro directo"]
+  },
+  rollercoin: {
+    emoji: "🎰",
+    name: "Rollercoin",
+    category: "Mineração & Jogos",
+    desc: "O Rollercoin é um jogo de mineração de cripto. Jogas minijogos para aumentar o teu poder de mineração e ganhas cripto real todos os dias.",
+    founded: "2018",
+    members: "+1.5 Milhões",
+    totalPaid: "+$5 Milhões",
+    rating: "4.0",
+    stars: "★★★★☆",
+    refLink: "https://rollercoin.com",
+    payment: {
+      metodos: "Bitcoin, Ethereum, Dogecoin, BNB, RLT",
+      minSaque: "Varia por cripto",
+      velocidade: "Imediato",
+      cripto: true,
+      frequencia: "A qualquer hora"
+    },
+    pros: ["Divertido e lucrativo", "Paga em múltiplas criptos", "Activo desde 2018", "Minijogos variados"],
+    cons: ["Precisa de jogar regularmente", "Poder de mineração diminui com o tempo"]
+  },
+  stormgain: {
+    emoji: "⚡",
+    name: "StormGain",
+    category: "Trading & Mineração",
+    desc: "O StormGain é uma plataforma de trading com um mineiro Bitcoin gratuito integrado. Activa o mineiro a cada 4 horas e acumula BTC sem custo.",
+    founded: "2019",
+    members: "+3 Milhões",
+    totalPaid: "N/D",
+    rating: "3.9",
+    stars: "★★★☆☆",
+    refLink: "https://app.stormgain.com",
+    payment: {
+      metodos: "Bitcoin, USDT, Ethereum e outras",
+      minSaque: "$100 (mineração)",
+      velocidade: "Após trading obrigatório",
+      cripto: true,
+      frequencia: "Após cumprir requisitos"
+    },
+    pros: ["Mineração grátis de Bitcoin", "+3 Milhões de utilizadores", "App disponível para Android", "Plataforma profissional"],
+    cons: ["Mínimo alto para saque de mineração", "Exige trading para sacar ganhos de mineração", "Mais complexo"]
+  },
+  youcubez: {
+    emoji: "🎬",
+    name: "You-Cubez",
+    category: "Ver Vídeos & Ganhar",
+    desc: "O You-Cubez paga-te por ver vídeos online. Simples, directo e sem necessidade de investimento. Compatível com Angola e com saque em cripto.",
+    founded: "2017",
+    members: "+500 Mil",
+    totalPaid: "+$1 Milhão",
+    rating: "4.0",
+    stars: "★★★★☆",
+    refLink: "https://www.you-cubez.com/?referer=1626930&tid=TRACKINGIDHERE",
+    payment: {
+      metodos: "Bitcoin, PayPal, Gift Cards",
+      minSaque: "$1.00",
+      velocidade: "1-3 dias úteis",
+      cripto: true,
+      frequencia: "Semanalmente"
+    },
+    pros: ["Ver vídeos e ganhar", "Sem investimento", "Compatível com Angola", "Mínimo baixo ($1)"],
+    cons: ["Ganhos dependem da disponibilidade de vídeos", "Algumas limitações por país"]
+  },
+  costv: {
+    emoji: "📺",
+    name: "COS.TV",
+    category: "Vídeo & Cripto",
+    desc: "O COS.TV é uma plataforma de vídeo baseada em blockchain onde podes ver conteúdo e ganhar tokens COS. Criado pela Contentos, é uma alternativa descentralizada ao YouTube.",
+    founded: "2020",
+    members: "+1 Milhão",
+    totalPaid: "N/D",
+    rating: "4.1",
+    stars: "★★★★☆",
+    refLink: "https://cos.tv/account/register?invite_code=QLD5Z",
+    payment: {
+      metodos: "Token COS (cripto)",
+      minSaque: "Varia por token",
+      velocidade: "Imediato na blockchain",
+      cripto: true,
+      frequencia: "Diariamente"
+    },
+    pros: ["Ganha cripto a ver vídeos", "Plataforma blockchain transparente", "Sem investimento", "Tokens trocáveis em exchanges"],
+    cons: ["Token COS pode variar de valor", "Menos conteúdo que o YouTube", "Requer conhecimento básico de cripto"]
+  }
+};
+
+function renderStars(rating) {
+  const r = parseFloat(rating);
+  let s = "";
+  for(let i=1;i<=5;i++){
+    if(i<=Math.floor(r)) s+="★";
+    else if(i-r<1&&i-r>0) s+="★";
+    else s+="☆";
+  }
+  return s;
+}
+
+function render(p) {
+  const d = platforms[p];
+  if(!d) {
+    document.getElementById('loading').innerHTML = '<div style="text-align:center;padding:80px 24px;"><div style="font-size:3rem;">😕</div><h2 style="margin:16px 0 8px;">Plataforma não encontrada</h2><p style="color:#888;">Volta à lista de plataformas.</p><br><a href="plataformas.html" style="color:#FFD700;">← Ver todas as plataformas</a></div>';
+    return;
+  }
+
+  document.title = d.name + " – LombongoOnline";
+
+  const html = `
+    <div class="detail-header">
+      <span class="detail-emoji">${d.emoji}</span>
+      <div class="detail-name">${d.name}</div>
+      <span class="detail-category">${d.category}</span>
+      <p class="detail-desc">${d.desc}</p>
+    </div>
+
+    <div class="stars-block">
+      <div class="stars-big">${renderStars(d.rating)}</div>
+      <div class="stars-num">${d.rating}<span style="font-size:1.2rem;color:#555;">/5</span></div>
+      <div class="stars-label">Avaliação LombongoOnline</div>
+    </div>
+
+    <div class="stats-grid">
+      <div class="stat-card">
+        <span class="stat-icon">📅</span>
+        <span class="stat-value">${d.founded}</span>
+        <span class="stat-label">Ano de Fundação</span>
+      </div>
+      <div class="stat-card">
+        <span class="stat-icon">👥</span>
+        <span class="stat-value">${d.members}</span>
+        <span class="stat-label">Membros Registados</span>
+      </div>
+      <div class="stat-card">
+        <span class="stat-icon">💸</span>
+        <span class="stat-value">${d.totalPaid}</span>
+        <span class="stat-label">Total Já Pago</span>
+      </div>
+      <div class="stat-card">
+        <span class="stat-icon">${d.payment.cripto ? "₿" : "💳"}</span>
+        <span class="stat-value" style="font-size:1.1rem;">${d.payment.cripto ? "SIM" : "NÃO"}</span>
+        <span class="stat-label">Paga em Cripto</span>
+      </div>
+    </div>
+
+    <div class="section-title">💳 Informações de Pagamento</div>
+    <div class="pay-grid">
+      <div class="pay-item">
+        <span class="pay-icon">💰</span>
+        <div class="pay-label">Métodos</div>
+        <div class="pay-value pay-crypto">${d.payment.metodos}</div>
+      </div>
+      <div class="pay-item">
+        <span class="pay-icon">📉</span>
+        <div class="pay-label">Saque Mínimo</div>
+        <div class="pay-value">${d.payment.minSaque}</div>
+      </div>
+      <div class="pay-item">
+        <span class="pay-icon">⚡</span>
+        <div class="pay-label">Velocidade</div>
+        <div class="pay-value">${d.payment.velocidade}</div>
+      </div>
+      <div class="pay-item">
+        <span class="pay-icon">🔄</span>
+        <div class="pay-label">Frequência</div>
+        <div class="pay-value">${d.payment.frequencia}</div>
+      </div>
+    </div>
+
+    <div class="ad-box ad-mid"><ins class="monetag-ad" data-zone="10951387" style="display:inline-block;width:300px;height:250px;max-width:100%;"></ins></div>
+
+    <div class="section-title">✅ Prós e Contras</div>
+    <div class="pros-cons">
+      <div class="pros">
+        <h4>✅ Pontos Positivos</h4>
+        <ul>${d.pros.map(p=>`<li>${p}</li>`).join('')}</ul>
+      </div>
+      <div class="cons">
+        <h4>❌ Pontos Negativos</h4>
+        <ul>${d.cons.map(c=>`<li>${c}</li>`).join('')}</ul>
+      </div>
+    </div>
+
+    <div class="cta-box">
+      <h3>🚀 Pronto para começar?</h3>
+      <p>Regista-te gratuitamente no ${d.name} e começa a ganhar hoje mesmo.</p>
+      <a href="${d.refLink}" target="_blank" class="btn-reg">Registar Agora no ${d.name} →</a>
+    </div>
+  `;
+
+  document.getElementById('content').innerHTML = html;
+  document.getElementById('loading').style.display = 'none';
+  document.getElementById('content').style.display = 'block';
+}
+
+const params = new URLSearchParams(window.location.search);
+const plat = params.get('p') || '';
+setTimeout(() => render(plat), 600);
+</script>
+</body>
+</html>

@@ -1,0 +1,1125 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ganhar com Redes Sociais — LombongoOnline</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Outfit:wght@300;400;600;700;900&display=swap" rel="stylesheet">
+<style>
+:root {
+  --gold: #FFD700;
+  --gold2: #FFA500;
+  --red: #CC0000;
+  --bg: #0a0a0a;
+  --card: #141414;
+  --border: #222;
+  --text: #f0f0f0;
+  --muted: #888;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { background: var(--bg); color: var(--text); font-family: 'Outfit', sans-serif; line-height: 1.6; }
+
+/* HERO */
+.hero {
+  position: relative;
+  padding: 70px 24px 60px;
+  text-align: center;
+  overflow: hidden;
+}
+.hero::before {
+  content: '';
+  position: absolute;
+  top: -100px; left: 50%;
+  transform: translateX(-50%);
+  width: 600px; height: 600px;
+  background: radial-gradient(circle, rgba(255,165,0,0.1) 0%, transparent 70%);
+  pointer-events: none;
+}
+.hero-badge {
+  display: inline-block;
+  background: var(--red);
+  color: #fff;
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  padding: 6px 18px;
+  border-radius: 999px;
+  margin-bottom: 20px;
+}
+.hero h1 {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: clamp(3rem, 12vw, 6rem);
+  line-height: 0.95;
+  letter-spacing: 2px;
+  background: linear-gradient(135deg, #FFD700, #FFA500, #FF6B00);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin-bottom: 20px;
+}
+.hero p {
+  color: #bbb;
+  font-size: clamp(1rem, 3vw, 1.2rem);
+  max-width: 560px;
+  margin: 0 auto 32px;
+}
+.hero-icons {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  flex-wrap: wrap;
+  margin-bottom: 40px;
+}
+.hero-icon {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+}
+.icon-circle {
+  width: 56px; height: 56px;
+  border-radius: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.6rem;
+  border: 1px solid #333;
+}
+.hero-icon span {
+  font-size: 0.7rem;
+  color: var(--muted);
+  font-weight: 600;
+}
+
+/* SECTIONS */
+.section { padding: 48px 24px; max-width: 700px; margin: 0 auto; }
+.section-label {
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 10px;
+}
+.section h2 {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: clamp(2rem, 8vw, 3.5rem);
+  letter-spacing: 2px;
+  line-height: 1;
+  margin-bottom: 20px;
+}
+.section p { color: #bbb; font-size: 0.95rem; margin-bottom: 16px; }
+
+/* DIVIDER */
+.divider { border: none; border-top: 1px solid var(--border); margin: 0 24px; }
+
+/* ILLUSTRATION CARD */
+.illus-card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  padding: 32px 24px;
+  margin: 28px 0;
+  position: relative;
+  overflow: hidden;
+}
+.illus-card::before {
+  content: '';
+  position: absolute;
+  top: 0; right: 0;
+  width: 200px; height: 200px;
+  background: radial-gradient(circle, rgba(255,165,0,0.06) 0%, transparent 70%);
+}
+.illus-big { font-size: 4rem; margin-bottom: 16px; display: block; }
+.illus-card h3 {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 1.8rem;
+  letter-spacing: 1px;
+  color: var(--gold);
+  margin-bottom: 10px;
+}
+.illus-card p { color: #bbb; font-size: 0.9rem; }
+
+/* FLOW */
+.flow {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  margin: 28px 0;
+}
+.flow-step {
+  display: flex;
+  gap: 16px;
+  align-items: flex-start;
+  position: relative;
+}
+.flow-step:not(:last-child)::after {
+  content: '';
+  position: absolute;
+  left: 19px;
+  top: 44px;
+  width: 2px;
+  height: calc(100% + 8px);
+  background: linear-gradient(to bottom, #FFD700, #333);
+}
+.step-num {
+  width: 40px; height: 40px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--gold), var(--gold2));
+  color: #000;
+  font-weight: 900;
+  font-size: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  position: relative;
+  z-index: 1;
+}
+.step-body { padding: 8px 0 28px; }
+.step-body strong { color: var(--text); font-size: 0.95rem; display: block; margin-bottom: 4px; }
+.step-body span { color: var(--muted); font-size: 0.85rem; }
+
+/* PLATFORM CARDS */
+.plat-card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 24px;
+  margin-bottom: 16px;
+  transition: border-color 0.2s;
+}
+.plat-card:hover { border-color: var(--gold); }
+.plat-header {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 14px;
+}
+.plat-icon {
+  font-size: 2rem;
+  width: 52px; height: 52px;
+  background: #1a1a1a;
+  border-radius: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid #333;
+}
+.plat-name { font-weight: 900; font-size: 1.1rem; color: var(--gold); }
+.plat-type { font-size: 0.75rem; color: var(--muted); }
+.plat-desc { color: #bbb; font-size: 0.88rem; margin-bottom: 14px; line-height: 1.6; }
+.tags { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 14px; }
+.tag {
+  font-size: 0.7rem; font-weight: 600;
+  padding: 4px 12px; border-radius: 999px;
+  background: rgba(255,215,0,0.08);
+  color: var(--gold);
+  border: 1px solid rgba(255,215,0,0.15);
+}
+.plat-stats {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+  margin-bottom: 16px;
+}
+.stat {
+  background: #0f0f0f;
+  border-radius: 10px;
+  padding: 10px 8px;
+  text-align: center;
+}
+.stat-val { font-weight: 900; font-size: 1rem; color: var(--gold); display: block; }
+.stat-lbl { font-size: 0.65rem; color: var(--muted); text-transform: uppercase; letter-spacing: 1px; }
+.btn-join {
+  display: block;
+  background: linear-gradient(135deg, var(--gold), var(--gold2));
+  color: #000;
+  font-weight: 900;
+  font-size: 0.9rem;
+  padding: 13px;
+  border-radius: 10px;
+  text-align: center;
+  text-decoration: none;
+}
+
+/* FAQ */
+.faq-item {
+  border-bottom: 1px solid var(--border);
+  padding: 20px 0;
+}
+.faq-q {
+  font-weight: 700;
+  color: var(--text);
+  font-size: 0.95rem;
+  margin-bottom: 10px;
+  display: flex;
+  gap: 12px;
+  align-items: flex-start;
+}
+.faq-q span { color: var(--gold); font-size: 1.2rem; flex-shrink: 0; }
+.faq-a { color: var(--muted); font-size: 0.88rem; padding-left: 30px; line-height: 1.7; }
+
+/* HIGHLIGHT BOX */
+.highlight {
+  background: linear-gradient(135deg, rgba(255,215,0,0.06), rgba(255,165,0,0.03));
+  border: 1px solid rgba(255,215,0,0.15);
+  border-radius: 16px;
+  padding: 24px;
+  margin: 24px 0;
+}
+.highlight-icon { font-size: 2rem; margin-bottom: 10px; display: block; }
+.highlight h4 { font-weight: 900; color: var(--gold); margin-bottom: 8px; }
+.highlight p { color: #bbb; font-size: 0.88rem; }
+
+/* SOCIAL LIST */
+.social-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  margin: 20px 0;
+}
+.social-item {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 16px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.social-emoji { font-size: 1.6rem; }
+.social-name { font-weight: 700; font-size: 0.9rem; }
+.social-sub { font-size: 0.72rem; color: var(--muted); }
+
+/* CTA FINAL */
+.cta-final {
+  background: linear-gradient(135deg, rgba(255,215,0,0.08), rgba(255,100,0,0.04));
+  border: 1px solid rgba(255,215,0,0.2);
+  border-radius: 20px;
+  padding: 40px 24px;
+  text-align: center;
+  margin: 40px 24px;
+}
+.cta-final h2 {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: clamp(2rem, 8vw, 3rem);
+  letter-spacing: 2px;
+  background: linear-gradient(135deg, #FFD700, #FFA500);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin-bottom: 12px;
+}
+.cta-final p { color: #bbb; font-size: 0.9rem; margin-bottom: 24px; }
+
+  /* APOIA-ME BUTTON BAR */
+  .apoiame-bar{background:#111;border-bottom:1px solid #1a1a1a;padding:8px 24px;display:flex;align-items:center;justify-content:space-between;}
+  .btn-apoiame{display:inline-flex;align-items:center;gap:6px;background:linear-gradient(135deg,#FFD700,#FFA500);color:#000;font-weight:900;font-size:0.72rem;letter-spacing:1px;text-transform:uppercase;padding:6px 15px;border-radius:999px;text-decoration:none;box-shadow:0 0 18px rgba(255,165,0,0.3);transition:transform 0.2s,box-shadow 0.2s;}
+  .btn-apoiame:hover{transform:translateY(-2px);box-shadow:0 0 30px rgba(255,165,0,0.5);}
+</style>
+<script>(function(s){s.dataset.zone='10951387',s.src='https://al5sm.com/tag.min.js'})([document.documentElement, document.body].filter(Boolean).pop().appendChild(document.createElement('script')))</script>
+<script src="https://5gvci.com/act/files/tag.min.js?z=10951410" data-cfasync="false" async></script>
+<script>(function(s){s.dataset.zone='10958760',s.src='https://n6wxm.com/vignette.min.js'})([document.documentElement, document.body].filter(Boolean).pop().appendChild(document.createElement('script')))</script>
+<script>(function(s){s.dataset.zone='10985009',s.src='https://nap5k.com/tag.min.js'})([document.documentElement, document.body].filter(Boolean).pop().appendChild(document.createElement('script')))</script>
+</head>
+<body>
+
+
+<!-- APOIA-ME BAR -->
+<div class="apoiame-bar">
+  <a href="https://omg10.com/4/10959986" target="_blank" class="btn-apoiame">❤️ Apoia-me 🙏</a>
+  <a href="carteira-digital.html" target="_blank" class="btn-apoiame">💳 Carteira Digital</a>
+</div>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-badge">🇦🇴 Feito para Angola</div>
+  <h1>Ganha Dinheiro<br>com as Tuas<br>Redes Sociais</h1>
+  <p>Tens Facebook, WhatsApp, Instagram ou TikTok? Mesmo sem muitos seguidores, podes começar a ganhar dinheiro real — em Kwanzas — hoje mesmo.</p>
+
+  <div class="hero-icons">
+    <!-- Facebook -->
+    <div class="hero-icon">
+      <div class="icon-circle" style="background:#1877F2;border-color:#1877F2;">
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="white" xmlns="http://www.w3.org/2000/svg">
+          <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+        </svg>
+      </div>
+      <span>Facebook</span>
+    </div>
+    <!-- WhatsApp -->
+    <div class="hero-icon">
+      <div class="icon-circle" style="background:#25D366;border-color:#25D366;">
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="white" xmlns="http://www.w3.org/2000/svg">
+          <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+        </svg>
+      </div>
+      <span>WhatsApp</span>
+    </div>
+    <!-- Instagram -->
+    <div class="hero-icon">
+      <div class="icon-circle" style="background:radial-gradient(circle at 30% 110%, #fdf497 0%, #fdf497 5%, #fd5949 45%, #d6249f 60%, #285AEB 90%);border-color:#d6249f;">
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="white" xmlns="http://www.w3.org/2000/svg">
+          <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/>
+        </svg>
+      </div>
+      <span>Instagram</span>
+    </div>
+    <!-- TikTok -->
+    <div class="hero-icon">
+      <div class="icon-circle" style="background:#000;border-color:#333;">
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="white" xmlns="http://www.w3.org/2000/svg">
+          <path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.88 2.5 2.89 2.89 0 01-2.89-2.89 2.89 2.89 0 012.89-2.89c.28 0 .54.04.79.1V9.01a6.33 6.33 0 00-.79-.05 6.34 6.34 0 00-6.34 6.34 6.34 6.34 0 006.34 6.34 6.34 6.34 0 006.33-6.34V8.69a8.18 8.18 0 004.78 1.52V6.76a4.85 4.85 0 01-1.01-.07z"/>
+        </svg>
+      </div>
+      <span>TikTok</span>
+    </div>
+    <!-- Twitter/X -->
+    <div class="hero-icon">
+      <div class="icon-circle" style="background:#000;border-color:#333;">
+        <svg width="26" height="26" viewBox="0 0 24 24" fill="white" xmlns="http://www.w3.org/2000/svg">
+          <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.747l7.73-8.835L1.254 2.25H8.08l4.253 5.622zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+        </svg>
+      </div>
+      <span>Twitter/X</span>
+    </div>
+    <!-- Telegram -->
+    <div class="hero-icon">
+      <div class="icon-circle" style="background:#229ED9;border-color:#229ED9;">
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="white" xmlns="http://www.w3.org/2000/svg">
+          <path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/>
+        </svg>
+      </div>
+      <span>Telegram</span>
+    </div>
+  </div>
+</div>
+
+<hr class="divider">
+
+<!-- 3 PLATAFORMAS — logo após os ícones -->
+<div class="section">
+  <div class="section-label">Escolhe a tua plataforma</div>
+  <h2>3 plataformas<br>para começar</h2>
+  <p>Podes usar as três ao mesmo tempo — cada uma paga de forma independente e não há conflito entre elas.</p>
+
+  <!-- Monetag -->
+  <div class="plat-card">
+    <div class="plat-header">
+      <div class="plat-icon" style="background:#00C853;padding:0;display:flex;align-items:center;justify-content:center;">
+        <svg width="30" height="30" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="20" cy="20" r="20" fill="#00C853"/>
+          <text x="50%" y="56%" dominant-baseline="middle" text-anchor="middle" font-size="20" font-weight="bold" fill="white" font-family="Arial">M</text>
+        </svg>
+      </div>
+      <div>
+        <div class="plat-name">Monetag</div>
+        <div class="plat-type">Monetização de tráfego · SmartLink</div>
+      </div>
+    </div>
+    <div class="plat-desc">
+      A plataforma mais recomendada para redes sociais. Dá-te um SmartLink — um link inteligente que detecta o país e o dispositivo do visitante e mostra o anúncio mais lucrativo automaticamente.
+      <br><br>
+      Não precisas de site. Colocas o link no teu Facebook ou WhatsApp e já está a funcionar.
+    </div>
+    <div class="tags">
+      <span class="tag">✅ Sem site necessário</span>
+      <span class="tag">📱 Redes Sociais</span>
+      <span class="tag">₿ Crypto semanal</span>
+      <span class="tag">🌍 Angola aceite</span>
+      <span class="tag">$5 mínimo saque</span>
+    </div>
+    <div class="plat-stats">
+      <div class="stat"><span class="stat-val">$5</span><span class="stat-lbl">Mín. saque</span></div>
+      <div class="stat"><span class="stat-val">Semanal</span><span class="stat-lbl">Pagamento</span></div>
+      <div class="stat"><span class="stat-val">USDT</span><span class="stat-lbl">Moeda</span></div>
+    </div>
+    <a href="https://monetag.com/?ref_id=t3Ia" target="_blank" class="btn-join">Criar Conta Grátis no Monetag →</a>
+  </div>
+
+  <!-- Adsterra -->
+  <div class="plat-card">
+    <div class="plat-header">
+      <div class="plat-icon" style="background:#2196F3;padding:0;display:flex;align-items:center;justify-content:center;">
+        <svg width="30" height="30" viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="20" cy="20" r="20" fill="#2196F3"/>
+          <text x="50%" y="56%" dominant-baseline="middle" text-anchor="middle" font-size="20" font-weight="bold" fill="white" font-family="Arial">A</text>
+        </svg>
+      </div>
+      <div>
+        <div class="plat-name">Adsterra</div>
+        <div class="plat-type">Rede de anúncios global</div>
+      </div>
+    </div>
+    <div class="plat-desc">
+      Uma das maiores redes de anúncios do mundo com mais de 2.000 anunciantes directos. Aceita tráfego de redes sociais e paga consistentemente todas as semanas.
+      <br><br>
+      Boa para complementar o Monetag — usa os dois ao mesmo tempo e duplicas as tuas hipóteses de ganho.
+    </div>
+    <div class="tags">
+      <span class="tag">🌍 Global</span>
+      <span class="tag">💵 USDT</span>
+      <span class="tag">✅ Angola aceite</span>
+      <span class="tag">📱 Mobile friendly</span>
+      <span class="tag">$5 mínimo saque</span>
+    </div>
+    <div class="plat-stats">
+      <div class="stat"><span class="stat-val">$5</span><span class="stat-lbl">Mín. saque</span></div>
+      <div class="stat"><span class="stat-val">Semanal</span><span class="stat-lbl">Pagamento</span></div>
+      <div class="stat"><span class="stat-val">USDT</span><span class="stat-lbl">Moeda</span></div>
+    </div>
+    <a href="https://beta.publishers.adsterra.com/referral/9rd93kWXAh" target="_blank" class="btn-join">Criar Conta Grátis no Adsterra →</a>
+  </div>
+
+  <!-- Hilltopads -->
+  <div class="plat-card">
+    <div class="plat-header">
+      <div class="plat-icon" style="background:#FF6600;padding:0;display:flex;align-items:center;justify-content:center;">
+        <svg width="30" height="30" viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="20" cy="20" r="20" fill="#FF6600"/>
+          <text x="50%" y="56%" dominant-baseline="middle" text-anchor="middle" font-size="20" font-weight="bold" fill="white" font-family="Arial">H</text>
+        </svg>
+      </div>
+      <div>
+        <div class="plat-name">Hilltopads</div>
+        <div class="plat-type">MultiTag automático · Alta conversão</div>
+      </div>
+    </div>
+    <div class="plat-desc">
+      Sistema inteligente que testa automaticamente vários formatos de anúncio e escolhe sempre o que paga mais. Uma vez configurado, trabalha sozinho.
+      <br><br>
+      Ideal para quem não quer complicações — instalas uma vez e o sistema optimiza tudo automaticamente.
+    </div>
+    <div class="tags">
+      <span class="tag">🤖 Automático</span>
+      <span class="tag">📱 Mobile</span>
+      <span class="tag">✅ Angola aceite</span>
+      <span class="tag">💰 MultiTag</span>
+      <span class="tag">$50 mínimo saque</span>
+    </div>
+    <div class="plat-stats">
+      <div class="stat"><span class="stat-val">$50</span><span class="stat-lbl">Mín. saque</span></div>
+      <div class="stat"><span class="stat-val">Mensal</span><span class="stat-lbl">Pagamento</span></div>
+      <div class="stat"><span class="stat-val">Crypto</span><span class="stat-lbl">Moeda</span></div>
+    </div>
+    <a href="https://hilltopads.com/pt?ref=381491" target="_blank" class="btn-join">Criar Conta Grátis no Hilltopads →</a>
+  </div>
+</div>
+
+<hr class="divider">
+
+<!-- O QUE É ISTO -->
+<div class="section">
+  <div class="section-label">O que é isto?</div>
+  <h2>Como é possível<br>ganhar dinheiro<br>assim?</h2>
+  <p>As grandes empresas do mundo pagam para mostrar os seus anúncios às pessoas. Quando alguém visita uma página com anúncios, o dono dessa página recebe uma parte desse pagamento.</p>
+  <p>O que vais fazer é simples: <strong style="color:#FFD700;">partilhar um link especial</strong> nas tuas redes sociais. Quando os teus amigos clicam nesse link, eles chegam a uma página com anúncios — e <strong style="color:#FFD700;">tu recebes dinheiro por isso</strong>.</p>
+
+  <div class="illus-card">
+    <span class="illus-big">🔗</span>
+    <h3>O teu link especial</h3>
+    <p>Cada plataforma de monetização dá-te um link único. Partilhas esse link no teu Facebook, WhatsApp ou TikTok. Cada vez que alguém clicar, tu ganhas. Sem fazer mais nada.</p>
+  </div>
+</div>
+
+<hr class="divider">
+
+<!-- COMO FUNCIONA PASSO A PASSO -->
+<div class="section">
+  <div class="section-label">Passo a passo</div>
+  <h2>Como funciona<br>na prática</h2>
+
+  <div class="flow">
+    <div class="flow-step">
+      <div class="step-num">1</div>
+      <div class="step-body">
+        <strong>Crias uma conta gratuita</strong>
+        <span>Registas-te numa das plataformas de monetização abaixo. É completamente gratuito e não precisas de cartão.</span>
+      </div>
+    </div>
+    <div class="flow-step">
+      <div class="step-num">2</div>
+      <div class="step-body">
+        <strong>Recebes o teu link único</strong>
+        <span>A plataforma gera um link especial só para ti. Este link tem o teu ID — tudo o que vier por ele é teu.</span>
+      </div>
+    </div>
+    <div class="flow-step">
+      <div class="step-num">3</div>
+      <div class="step-body">
+        <strong>Partilhas nas redes sociais</strong>
+        <span>Colocas o link no teu Facebook, WhatsApp, TikTok ou onde quiseres. Quando os teus amigos clicam, chegam a uma página com anúncios.</span>
+      </div>
+    </div>
+    <div class="flow-step">
+      <div class="step-num">4</div>
+      <div class="step-body">
+        <strong>Acumulas dinheiro automaticamente</strong>
+        <span>Cada clique gera impressões de anúncios. O dinheiro acumula no teu painel em tempo real.</span>
+      </div>
+    </div>
+    <div class="flow-step">
+      <div class="step-num">5</div>
+      <div class="step-body">
+        <strong>Sacas em cripto → Kwanzas</strong>
+        <span>Quando atinges o mínimo de $5, pedes o levantamento. O dinheiro vai para a tua Binance. Depois converte para Kwanzas via P2P.</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<hr class="divider">
+
+<!-- O QUE PODES GANHAR POR ACÇÃO -->
+<div class="section">
+  <div class="section-label">O que podes ganhar</div>
+  <h2>Quanto ganhas<br>por cada acção?</h2>
+  <p>Nas plataformas de monetização de tráfego, o que gera dinheiro são os <strong style="color:#FFD700;">cliques e visualizações de anúncios</strong>. Aqui está o que cada acção vale para ti:</p>
+
+  <div style="display:flex;flex-direction:column;gap:12px;margin:24px 0;">
+
+    <div style="background:#141414;border:1px solid #2a2a2a;border-radius:14px;padding:20px;display:flex;align-items:center;gap:16px;">
+      <div style="width:44px;height:44px;border-radius:12px;background:linear-gradient(135deg,#FFD700,#FFA500);display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:1.3rem;">👁️</div>
+      <div style="flex:1;">
+        <div style="font-weight:900;color:#FFD700;font-size:1rem;">Ganhar com Visualizações</div>
+        <div style="color:#aaa;font-size:0.83rem;margin-top:4px;line-height:1.5;">Cada vez que alguém clica no teu link e vê um anúncio, tu ganhas. Quanto mais pessoas virem, mais acumulas. É a fonte principal de rendimento.</div>
+      </div>
+      <div style="font-family:'Bebas Neue',sans-serif;font-size:1.3rem;color:#FFD700;flex-shrink:0;">$0.001–$0.01<br><span style="font-size:0.7rem;color:#666;">por clique</span></div>
+    </div>
+
+    <div style="background:#141414;border:1px solid #2a2a2a;border-radius:14px;padding:20px;display:flex;align-items:center;gap:16px;">
+      <div style="width:44px;height:44px;border-radius:12px;background:linear-gradient(135deg,#FFD700,#FFA500);display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:1.3rem;">❤️</div>
+      <div style="flex:1;">
+        <div style="font-weight:900;color:#FFD700;font-size:1rem;">Ganhar com Likes</div>
+        <div style="color:#aaa;font-size:0.83rem;margin-top:4px;line-height:1.5;">O like não paga directamente — mas aumenta o alcance do teu post. Mais pessoas vêem, mais clicam no link, mais ganhas.</div>
+      </div>
+      <div style="font-family:'Bebas Neue',sans-serif;font-size:1.3rem;color:#FFD700;flex-shrink:0;">↑ Alcance<br><span style="font-size:0.7rem;color:#666;">indirecto</span></div>
+    </div>
+
+    <div style="background:#141414;border:1px solid #2a2a2a;border-radius:14px;padding:20px;display:flex;align-items:center;gap:16px;">
+      <div style="width:44px;height:44px;border-radius:12px;background:linear-gradient(135deg,#FFD700,#FFA500);display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:1.3rem;">💬</div>
+      <div style="flex:1;">
+        <div style="font-weight:900;color:#FFD700;font-size:1rem;">Ganhar com Comentários</div>
+        <div style="color:#aaa;font-size:0.83rem;margin-top:4px;line-height:1.5;">Comentários fazem o algoritmo distribuir o teu post a mais pessoas gratuitamente. Quanto mais comentários, mais visibilidade — e mais cliques no link.</div>
+      </div>
+      <div style="font-family:'Bebas Neue',sans-serif;font-size:1.3rem;color:#FFD700;flex-shrink:0;">↑ Viral<br><span style="font-size:0.7rem;color:#666;">indirecto</span></div>
+    </div>
+
+    <div style="background:#1a1500;border:1px solid #FFA500;border-radius:14px;padding:20px;display:flex;align-items:center;gap:16px;">
+      <div style="width:44px;height:44px;border-radius:12px;background:linear-gradient(135deg,#FFD700,#FFA500);display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:1.3rem;">🔄</div>
+      <div style="flex:1;">
+        <div style="font-weight:900;color:#FFD700;font-size:1rem;">Ganhar com Partilhas ⭐ Mais poderoso</div>
+        <div style="color:#aaa;font-size:0.83rem;margin-top:4px;line-height:1.5;">Cada partilha leva o teu link a uma nova audiência. Uma partilha pode trazer dezenas de novos cliques de pessoas que nem te seguem.</div>
+      </div>
+      <div style="font-family:'Bebas Neue',sans-serif;font-size:1.3rem;color:#FFD700;flex-shrink:0;">✖️ Multiplica<br><span style="font-size:0.7rem;color:#666;">cliques</span></div>
+    </div>
+
+  </div>
+
+  <div class="highlight">
+    <span class="highlight-icon">💡</span>
+    <h4>Resumo simples</h4>
+    <p>O dinheiro vem dos <strong>cliques no teu link</strong>. Likes, comentários e partilhas são ferramentas para levar esse link a mais pessoas — e assim multiplicar os teus ganhos.</p>
+  </div>
+</div>
+
+<hr class="divider">
+
+<!-- COMO CONECTAR CADA REDE SOCIAL -->
+<div class="section">
+  <div class="section-label">Como começar</div>
+  <h2>Como conectar<br>cada rede social</h2>
+  <p>Depois de criares a tua conta na plataforma e receberes o teu link, é só seguir estes passos em cada rede:</p>
+
+  <!-- FACEBOOK -->
+  <div style="background:#141414;border:1px solid #1877F2;border-radius:16px;padding:24px;margin-bottom:16px;">
+    <div style="display:flex;align-items:center;gap:12px;margin-bottom:16px;">
+      <div style="width:40px;height:40px;border-radius:10px;background:#1877F2;display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="white"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+      </div>
+      <div style="font-family:'Bebas Neue',sans-serif;font-size:1.4rem;color:#1877F2;letter-spacing:1px;">Facebook</div>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:10px;">
+      <div style="display:flex;gap:12px;align-items:flex-start;"><div style="width:24px;height:24px;border-radius:50%;background:#1877F2;color:#fff;font-weight:900;font-size:0.75rem;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px;">1</div><div style="color:#ccc;font-size:0.88rem;line-height:1.5;">Abre o Facebook e vai ao teu <strong style="color:#fff;">perfil</strong> ou a um <strong style="color:#fff;">grupo</strong> onde tens amigos</div></div>
+      <div style="display:flex;gap:12px;align-items:flex-start;"><div style="width:24px;height:24px;border-radius:50%;background:#1877F2;color:#fff;font-weight:900;font-size:0.75rem;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px;">2</div><div style="color:#ccc;font-size:0.88rem;line-height:1.5;">Clica em <strong style="color:#fff;">"O que estás a pensar?"</strong> para criar uma nova publicação</div></div>
+      <div style="display:flex;gap:12px;align-items:flex-start;"><div style="width:24px;height:24px;border-radius:50%;background:#1877F2;color:#fff;font-weight:900;font-size:0.75rem;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px;">3</div><div style="color:#ccc;font-size:0.88rem;line-height:1.5;">Escreve uma frase curta a chamar atenção (ex: "Descobri uma forma de ganhar dinheiro online em Angola, sem investimento") e <strong style="color:#fff;">cola o teu link</strong> a seguir</div></div>
+      <div style="display:flex;gap:12px;align-items:flex-start;"><div style="width:24px;height:24px;border-radius:50%;background:#1877F2;color:#fff;font-weight:900;font-size:0.75rem;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px;">4</div><div style="color:#ccc;font-size:0.88rem;line-height:1.5;">Publica como <strong style="color:#fff;">Público</strong> — não como "Amigos" — para mais pessoas verem</div></div>
+      <div style="display:flex;gap:12px;align-items:flex-start;"><div style="width:24px;height:24px;border-radius:50%;background:#1877F2;color:#fff;font-weight:900;font-size:0.75rem;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px;">5</div><div style="color:#ccc;font-size:0.88rem;line-height:1.5;">Dá like, comenta e partilha o teu próprio post imediatamente após publicar</div></div>
+    </div>
+  </div>
+
+  <!-- WHATSAPP -->
+  <div style="background:#141414;border:1px solid #25D366;border-radius:16px;padding:24px;margin-bottom:16px;">
+    <div style="display:flex;align-items:center;gap:12px;margin-bottom:16px;">
+      <div style="width:40px;height:40px;border-radius:10px;background:#25D366;display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+      </div>
+      <div style="font-family:'Bebas Neue',sans-serif;font-size:1.4rem;color:#25D366;letter-spacing:1px;">WhatsApp</div>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:10px;">
+      <div style="display:flex;gap:12px;align-items:flex-start;"><div style="width:24px;height:24px;border-radius:50%;background:#25D366;color:#fff;font-weight:900;font-size:0.75rem;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px;">1</div><div style="color:#ccc;font-size:0.88rem;line-height:1.5;">Abre o WhatsApp e vai ao teu <strong style="color:#fff;">Status</strong> (o ícone do círculo em cima)</div></div>
+      <div style="display:flex;gap:12px;align-items:flex-start;"><div style="width:24px;height:24px;border-radius:50%;background:#25D366;color:#fff;font-weight:900;font-size:0.75rem;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px;">2</div><div style="color:#ccc;font-size:0.88rem;line-height:1.5;">Clica no lápis ✏️ para criar um status de texto</div></div>
+      <div style="display:flex;gap:12px;align-items:flex-start;"><div style="width:24px;height:24px;border-radius:50%;background:#25D366;color:#fff;font-weight:900;font-size:0.75rem;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px;">3</div><div style="color:#ccc;font-size:0.88rem;line-height:1.5;">Escreve uma mensagem curta e <strong style="color:#fff;">cola o teu link</strong>. Ex: "Estou a ganhar dinheiro online sem investimento 👉 [teu link]"</div></div>
+      <div style="display:flex;gap:12px;align-items:flex-start;"><div style="width:24px;height:24px;border-radius:50%;background:#25D366;color:#fff;font-weight:900;font-size:0.75rem;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px;">4</div><div style="color:#ccc;font-size:0.88rem;line-height:1.5;">Também podes enviar o link directamente para <strong style="color:#fff;">grupos</strong> de que fazes parte — grupos grandes trazem mais cliques</div></div>
+      <div style="display:flex;gap:12px;align-items:flex-start;"><div style="width:24px;height:24px;border-radius:50%;background:#25D366;color:#fff;font-weight:900;font-size:0.75rem;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px;">5</div><div style="color:#ccc;font-size:0.88rem;line-height:1.5;">Actualiza o status <strong style="color:#fff;">todos os dias</strong> para manter o link visível para os teus contactos</div></div>
+    </div>
+  </div>
+
+  <!-- INSTAGRAM -->
+  <div style="background:#141414;border:1px solid #d6249f;border-radius:16px;padding:24px;margin-bottom:16px;">
+    <div style="display:flex;align-items:center;gap:12px;margin-bottom:16px;">
+      <div style="width:40px;height:40px;border-radius:10px;background:radial-gradient(circle at 30% 110%,#fdf497 0%,#fd5949 45%,#d6249f 60%,#285AEB 90%);display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="white"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+      </div>
+      <div style="font-family:'Bebas Neue',sans-serif;font-size:1.4rem;color:#d6249f;letter-spacing:1px;">Instagram</div>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:10px;">
+      <div style="display:flex;gap:12px;align-items:flex-start;"><div style="width:24px;height:24px;border-radius:50%;background:#d6249f;color:#fff;font-weight:900;font-size:0.75rem;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px;">1</div><div style="color:#ccc;font-size:0.88rem;line-height:1.5;">Vai ao teu perfil e clica em <strong style="color:#fff;">"Editar perfil"</strong> — coloca o teu link na <strong style="color:#fff;">bio</strong> (é o único lugar onde links clicáveis funcionam no Instagram)</div></div>
+      <div style="display:flex;gap:12px;align-items:flex-start;"><div style="width:24px;height:24px;border-radius:50%;background:#d6249f;color:#fff;font-weight:900;font-size:0.75rem;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px;">2</div><div style="color:#ccc;font-size:0.88rem;line-height:1.5;">Cria um <strong style="color:#fff;">Story</strong> (dura 24h) com uma imagem ou texto e menciona "link na bio"</div></div>
+      <div style="display:flex;gap:12px;align-items:flex-start;"><div style="width:24px;height:24px;border-radius:50%;background:#d6249f;color:#fff;font-weight:900;font-size:0.75rem;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px;">3</div><div style="color:#ccc;font-size:0.88rem;line-height:1.5;">Publica um <strong style="color:#fff;">Reels</strong> curto (15-30 segundos) a falar da oportunidade — os Reels têm muito mais alcance que posts normais</div></div>
+      <div style="display:flex;gap:12px;align-items:flex-start;"><div style="width:24px;height:24px;border-radius:50%;background:#d6249f;color:#fff;font-weight:900;font-size:0.75rem;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px;">4</div><div style="color:#ccc;font-size:0.88rem;line-height:1.5;">Usa hashtags como <strong style="color:#fff;">#ganhardinheiroangola #onlineangola #negocioonline</strong> para aumentar o alcance</div></div>
+    </div>
+  </div>
+
+  <!-- TIKTOK -->
+  <div style="background:#141414;border:1px solid #555;border-radius:16px;padding:24px;margin-bottom:16px;">
+    <div style="display:flex;align-items:center;gap:12px;margin-bottom:16px;">
+      <div style="width:40px;height:40px;border-radius:10px;background:#000;display:flex;align-items:center;justify-content:center;flex-shrink:0;border:1px solid #333;">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="white"><path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.88 2.5 2.89 2.89 0 01-2.89-2.89 2.89 2.89 0 012.89-2.89c.28 0 .54.04.79.1V9.01a6.33 6.33 0 00-.79-.05 6.34 6.34 0 00-6.34 6.34 6.34 6.34 0 006.34 6.34 6.34 6.34 0 006.33-6.34V8.69a8.18 8.18 0 004.78 1.52V6.76a4.85 4.85 0 01-1.01-.07z"/></svg>
+      </div>
+      <div style="font-family:'Bebas Neue',sans-serif;font-size:1.4rem;color:#fff;letter-spacing:1px;">TikTok</div>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:10px;">
+      <div style="display:flex;gap:12px;align-items:flex-start;"><div style="width:24px;height:24px;border-radius:50%;background:#555;color:#fff;font-weight:900;font-size:0.75rem;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px;">1</div><div style="color:#ccc;font-size:0.88rem;line-height:1.5;">Para teres link clicável no TikTok precisas de uma <strong style="color:#fff;">conta de negócios</strong> — vai a Definições → Gerir conta → Mudar para Conta de Negócios (é grátis)</div></div>
+      <div style="display:flex;gap:12px;align-items:flex-start;"><div style="width:24px;height:24px;border-radius:50%;background:#555;color:#fff;font-weight:900;font-size:0.75rem;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px;">2</div><div style="color:#ccc;font-size:0.88rem;line-height:1.5;">Depois vai a <strong style="color:#fff;">Editar perfil</strong> e adiciona o teu link no campo "Website"</div></div>
+      <div style="display:flex;gap:12px;align-items:flex-start;"><div style="width:24px;height:24px;border-radius:50%;background:#555;color:#fff;font-weight:900;font-size:0.75rem;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px;">3</div><div style="color:#ccc;font-size:0.88rem;line-height:1.5;">Faz vídeos curtos (15-60 seg) sobre ganhar dinheiro online e diz sempre <strong style="color:#fff;">"link na bio"</strong> no vídeo</div></div>
+      <div style="display:flex;gap:12px;align-items:flex-start;"><div style="width:24px;height:24px;border-radius:50%;background:#555;color:#fff;font-weight:900;font-size:0.75rem;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px;">4</div><div style="color:#ccc;font-size:0.88rem;line-height:1.5;">O TikTok tem muito alcance orgânico — um só vídeo pode chegar a milhares de pessoas mesmo sem seguidores</div></div>
+    </div>
+  </div>
+
+  <!-- TELEGRAM -->
+  <div style="background:#141414;border:1px solid #229ED9;border-radius:16px;padding:24px;margin-bottom:16px;">
+    <div style="display:flex;align-items:center;gap:12px;margin-bottom:16px;">
+      <div style="width:40px;height:40px;border-radius:10px;background:#229ED9;display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="white"><path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/></svg>
+      </div>
+      <div style="font-family:'Bebas Neue',sans-serif;font-size:1.4rem;color:#229ED9;letter-spacing:1px;">Telegram</div>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:10px;">
+      <div style="display:flex;gap:12px;align-items:flex-start;"><div style="width:24px;height:24px;border-radius:50%;background:#229ED9;color:#fff;font-weight:900;font-size:0.75rem;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px;">1</div><div style="color:#ccc;font-size:0.88rem;line-height:1.5;">Cria um <strong style="color:#fff;">Canal público</strong> no Telegram — vai ao menu → Novo Canal → escolhe "Público" e define um nome</div></div>
+      <div style="display:flex;gap:12px;align-items:flex-start;"><div style="width:24px;height:24px;border-radius:50%;background:#229ED9;color:#fff;font-weight:900;font-size:0.75rem;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px;">2</div><div style="color:#ccc;font-size:0.88rem;line-height:1.5;">Publica mensagens no canal com o teu link e convida os teus contactos a subscriberem</div></div>
+      <div style="display:flex;gap:12px;align-items:flex-start;"><div style="width:24px;height:24px;border-radius:50%;background:#229ED9;color:#fff;font-weight:900;font-size:0.75rem;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px;">3</div><div style="color:#ccc;font-size:0.88rem;line-height:1.5;">Também podes partilhar o link directamente em <strong style="color:#fff;">grupos de Telegram</strong> de Angola onde já és membro</div></div>
+      <div style="display:flex;gap:12px;align-items:flex-start;"><div style="width:24px;height:24px;border-radius:50%;background:#229ED9;color:#fff;font-weight:900;font-size:0.75rem;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px;">4</div><div style="color:#ccc;font-size:0.88rem;line-height:1.5;">O Telegram permite links clicáveis em qualquer mensagem — sem restrições como no Instagram ou TikTok</div></div>
+    </div>
+  </div>
+
+  <!-- TWITTER/X -->
+  <div style="background:#141414;border:1px solid #333;border-radius:16px;padding:24px;margin-bottom:0;">
+    <div style="display:flex;align-items:center;gap:12px;margin-bottom:16px;">
+      <div style="width:40px;height:40px;border-radius:10px;background:#000;display:flex;align-items:center;justify-content:center;flex-shrink:0;border:1px solid #333;">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="white"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.747l7.73-8.835L1.254 2.25H8.08l4.253 5.622zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+      </div>
+      <div style="font-family:'Bebas Neue',sans-serif;font-size:1.4rem;color:#fff;letter-spacing:1px;">Twitter / X</div>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:10px;">
+      <div style="display:flex;gap:12px;align-items:flex-start;"><div style="width:24px;height:24px;border-radius:50%;background:#333;color:#fff;font-weight:900;font-size:0.75rem;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px;">1</div><div style="color:#ccc;font-size:0.88rem;line-height:1.5;">Vai ao teu perfil → <strong style="color:#fff;">Editar perfil</strong> e adiciona o teu link no campo "Website"</div></div>
+      <div style="display:flex;gap:12px;align-items:flex-start;"><div style="width:24px;height:24px;border-radius:50%;background:#333;color:#fff;font-weight:900;font-size:0.75rem;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px;">2</div><div style="color:#ccc;font-size:0.88rem;line-height:1.5;">Cria um tweet com o link directamente — no Twitter/X os links clicáveis funcionam em qualquer tweet</div></div>
+      <div style="display:flex;gap:12px;align-items:flex-start;"><div style="width:24px;height:24px;border-radius:50%;background:#333;color:#fff;font-weight:900;font-size:0.75rem;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px;">3</div><div style="color:#ccc;font-size:0.88rem;line-height:1.5;">Usa hashtags populares como <strong style="color:#fff;">#Angola #GanharDinheiro #Online</strong> para aumentar o alcance</div></div>
+      <div style="display:flex;gap:12px;align-items:flex-start;"><div style="width:24px;height:24px;border-radius:50%;background:#333;color:#fff;font-weight:900;font-size:0.75rem;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px;">4</div><div style="color:#ccc;font-size:0.88rem;line-height:1.5;">Responde a tweets populares sobre negócios ou dinheiro com o teu link — isso traz tráfego de pessoas que não te seguem</div></div>
+    </div>
+  </div>
+
+</div>
+<div class="section">
+  <div class="section-label">Aumenta o alcance</div>
+  <h2>O que fazer<br>em cada publicação</h2>
+  <p>Cada vez que partilhares o teu link, faz estas acções para aumentar o alcance e trazer mais cliques:</p>
+
+  <div style="display:flex;flex-direction:column;gap:12px;margin:24px 0;">
+
+    <div style="display:flex;align-items:center;gap:16px;background:#141414;border:1px solid #2a2a2a;border-radius:14px;padding:18px 20px;">
+      <div style="width:28px;height:28px;border-radius:8px;background:linear-gradient(135deg,#FFD700,#FFA500);display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:1rem;">✅</div>
+      <div>
+        <div style="font-weight:700;color:#f0f0f0;font-size:0.95rem;">Navegar pelas suas páginas</div>
+        <div style="color:#888;font-size:0.82rem;margin-top:3px;">Explora o conteúdo do teu link antes de partilhar — isso ajuda a perceber o que os teus amigos vão ver</div>
+      </div>
+    </div>
+
+    <div style="display:flex;align-items:center;gap:16px;background:#141414;border:1px solid #2a2a2a;border-radius:14px;padding:18px 20px;">
+      <div style="width:28px;height:28px;border-radius:8px;background:linear-gradient(135deg,#FFD700,#FFA500);display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:1rem;">✅</div>
+      <div>
+        <div style="font-weight:700;color:#f0f0f0;font-size:0.95rem;">Dar like na tua publicação</div>
+        <div style="color:#888;font-size:0.82rem;margin-top:3px;">O próprio like já aumenta a visibilidade do post nos algoritmos do Facebook e Instagram</div>
+      </div>
+    </div>
+
+    <div style="display:flex;align-items:center;gap:16px;background:#141414;border:1px solid #2a2a2a;border-radius:14px;padding:18px 20px;">
+      <div style="width:28px;height:28px;border-radius:8px;background:linear-gradient(135deg,#FFD700,#FFA500);display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:1rem;">✅</div>
+      <div>
+        <div style="font-weight:700;color:#f0f0f0;font-size:0.95rem;">Comentar na tua publicação</div>
+        <div style="color:#888;font-size:0.82rem;margin-top:3px;">Deixa um comentário no teu próprio post — isso faz o algoritmo entender que há actividade e mostra o post a mais pessoas</div>
+      </div>
+    </div>
+
+    <div style="display:flex;align-items:center;gap:16px;background:#141414;border:1px solid #2a2a2a;border-radius:14px;padding:18px 20px;">
+      <div style="width:28px;height:28px;border-radius:8px;background:linear-gradient(135deg,#FFD700,#FFA500);display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:1rem;">✅</div>
+      <div>
+        <div style="font-weight:700;color:#f0f0f0;font-size:0.95rem;">Partilhar a tua publicação</div>
+        <div style="color:#888;font-size:0.82rem;margin-top:3px;">Partilha o teu próprio post nos grupos e no teu status do WhatsApp — cada partilha multiplica o alcance sem custo nenhum</div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="highlight">
+    <span class="highlight-icon">💡</span>
+    <h4>Porquê estas 4 acções?</h4>
+    <p>Os algoritmos das redes sociais medem a interacção para decidir a quem mostrar o teu post. Like + comentário + partilha logo após publicar diz ao algoritmo que o conteúdo é relevante — e ele distribui de graça para muito mais pessoas.</p>
+  </div>
+</div>
+
+<hr class="divider">
+
+<!-- REDES SOCIAIS -->
+<div class="section">
+  <div class="section-label">Onde partilhar</div>
+  <h2>Redes sociais<br>que funcionam</h2>
+  <p>Podes usar qualquer rede social que já uses no teu dia a dia. Não precisas de muitos seguidores — precisas de partilhar bem.</p>
+
+  <div class="social-grid">
+    <div class="social-item">
+      <div style="width:44px;height:44px;border-radius:12px;background:#1877F2;display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="white"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+      </div>
+      <div>
+        <div class="social-name">Facebook</div>
+        <div class="social-sub">⭐ Melhor resultado</div>
+      </div>
+    </div>
+    <div class="social-item">
+      <div style="width:44px;height:44px;border-radius:12px;background:#25D366;display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+      </div>
+      <div>
+        <div class="social-name">WhatsApp</div>
+        <div class="social-sub">⭐ Muito eficaz</div>
+      </div>
+    </div>
+    <div class="social-item">
+      <div style="width:44px;height:44px;border-radius:12px;background:#000;display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="white"><path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.88 2.5 2.89 2.89 0 01-2.89-2.89 2.89 2.89 0 012.89-2.89c.28 0 .54.04.79.1V9.01a6.33 6.33 0 00-.79-.05 6.34 6.34 0 00-6.34 6.34 6.34 6.34 0 006.34 6.34 6.34 6.34 0 006.33-6.34V8.69a8.18 8.18 0 004.78 1.52V6.76a4.85 4.85 0 01-1.01-.07z"/></svg>
+      </div>
+      <div>
+        <div class="social-name">TikTok</div>
+        <div class="social-sub">📈 Viral rápido</div>
+      </div>
+    </div>
+    <div class="social-item">
+      <div style="width:44px;height:44px;border-radius:12px;background:radial-gradient(circle at 30% 110%,#fdf497 0%,#fd5949 45%,#d6249f 60%,#285AEB 90%);display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="white"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+      </div>
+      <div>
+        <div class="social-name">Instagram</div>
+        <div class="social-sub">🔗 Link na bio</div>
+      </div>
+    </div>
+    <div class="social-item">
+      <div style="width:44px;height:44px;border-radius:12px;background:#229ED9;display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="white"><path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/></svg>
+      </div>
+      <div>
+        <div class="social-name">Telegram</div>
+        <div class="social-sub">👥 Grupos/canais</div>
+      </div>
+    </div>
+    <div class="social-item">
+      <div style="width:44px;height:44px;border-radius:12px;background:#000;display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="white"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.747l7.73-8.835L1.254 2.25H8.08l4.253 5.622zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+      </div>
+      <div>
+        <div class="social-name">Twitter/X</div>
+        <div class="social-sub">💰 CPM alto</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="highlight">
+    <span class="highlight-icon">💡</span>
+    <h4>Dica importante</h4>
+    <p>Não partilhes o link diretamente nas redes sociais — algumas plataformas bloqueiam links de anúncios. O correto é partilhar um post interessante que leve as pessoas a clicar. Aprenderás mais sobre isso abaixo.</p>
+  </div>
+</div>
+
+<hr class="divider">
+
+<!-- O QUE PODES GANHAR -->
+<div class="section">
+  <div class="section-label">Formas de ganhar</div>
+  <h2>O que podes<br>ganhar e como</h2>
+  <p>Cada acção que as pessoas fazem nas tuas publicações tem valor. Vê quanto podes ganhar com cada tipo de interacção:</p>
+
+  <div style="display:flex;flex-direction:column;gap:12px;margin:24px 0;">
+
+    <div style="background:#141414;border:1px solid #222;border-radius:14px;padding:20px;display:flex;align-items:center;gap:16px;">
+      <div style="width:48px;height:48px;border-radius:12px;background:linear-gradient(135deg,#1877F2,#0d5dbf);display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:1.4rem;">👁️</div>
+      <div style="flex:1;">
+        <div style="font-weight:900;color:#FFD700;font-size:0.95rem;margin-bottom:3px;">Ganhar com Visualizações</div>
+        <div style="color:#aaa;font-size:0.83rem;line-height:1.5;">Cada vez que alguém clica no teu link e vê a página com anúncios, tu ganhas. Quanto mais tempo ficarem na página, mais impressões de anúncios — e mais dinheiro para ti.</div>
+      </div>
+      <div style="text-align:center;flex-shrink:0;">
+        <div style="font-family:'Bebas Neue',sans-serif;font-size:1.3rem;color:#FFD700;">$0.001</div>
+        <div style="font-size:0.65rem;color:#888;text-transform:uppercase;letter-spacing:1px;">por visita</div>
+      </div>
+    </div>
+
+    <div style="background:#141414;border:1px solid #222;border-radius:14px;padding:20px;display:flex;align-items:center;gap:16px;">
+      <div style="width:48px;height:48px;border-radius:12px;background:linear-gradient(135deg,#e91e8c,#c2185b);display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:1.4rem;">❤️</div>
+      <div style="flex:1;">
+        <div style="font-weight:900;color:#FFD700;font-size:0.95rem;margin-bottom:3px;">Ganhar com Likes</div>
+        <div style="color:#aaa;font-size:0.83rem;line-height:1.5;">O like em si não paga directamente — mas aumenta o alcance do teu post. Mais alcance = mais cliques = mais dinheiro. Por isso pede aos teus amigos para darem like antes de clicar.</div>
+      </div>
+      <div style="text-align:center;flex-shrink:0;">
+        <div style="font-family:'Bebas Neue',sans-serif;font-size:1.3rem;color:#FFD700;">+Alcance</div>
+        <div style="font-size:0.65rem;color:#888;text-transform:uppercase;letter-spacing:1px;">= mais cliques</div>
+      </div>
+    </div>
+
+    <div style="background:#141414;border:1px solid #222;border-radius:14px;padding:20px;display:flex;align-items:center;gap:16px;">
+      <div style="width:48px;height:48px;border-radius:12px;background:linear-gradient(135deg,#FF9800,#e65100);display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:1.4rem;">💬</div>
+      <div style="flex:1;">
+        <div style="font-weight:900;color:#FFD700;font-size:0.95rem;margin-bottom:3px;">Ganhar com Comentários</div>
+        <div style="color:#aaa;font-size:0.83rem;line-height:1.5;">Os comentários fazem o algoritmo mostrar o teu post a ainda mais pessoas. Pede aos amigos para comentarem — mesmo que seja só "interessante!" — isso triplica o alcance do post.</div>
+      </div>
+      <div style="text-align:center;flex-shrink:0;">
+        <div style="font-family:'Bebas Neue',sans-serif;font-size:1.3rem;color:#FFD700;">3x</div>
+        <div style="font-size:0.65rem;color:#888;text-transform:uppercase;letter-spacing:1px;">mais alcance</div>
+      </div>
+    </div>
+
+    <div style="background:#141414;border:1px solid #222;border-radius:14px;padding:20px;display:flex;align-items:center;gap:16px;">
+      <div style="width:48px;height:48px;border-radius:12px;background:linear-gradient(135deg,#4CAF50,#2e7d32);display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:1.4rem;">🔁</div>
+      <div style="flex:1;">
+        <div style="font-weight:900;color:#FFD700;font-size:0.95rem;margin-bottom:3px;">Ganhar com Partilhas</div>
+        <div style="color:#aaa;font-size:0.83rem;line-height:1.5;">Cada partilha do teu post leva o teu link a novos grupos e novas pessoas que nunca te viram. É a forma mais poderosa de crescer — uma partilha pode trazer dezenas de novos cliques de graça.</div>
+      </div>
+      <div style="text-align:center;flex-shrink:0;">
+        <div style="font-family:'Bebas Neue',sans-serif;font-size:1.3rem;color:#FFD700;">10x+</div>
+        <div style="font-size:0.65rem;color:#888;text-transform:uppercase;letter-spacing:1px;">novos cliques</div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<hr class="divider">
+
+<!-- COMO LIGAR CADA REDE SOCIAL -->
+<div class="section">
+  <div class="section-label">Guia de configuração</div>
+  <h2>Como ligar cada<br>rede social</h2>
+  <p>Segue estes passos para cada plataforma. É simples e demora menos de 5 minutos por rede social.</p>
+
+  <!-- FACEBOOK -->
+  <div class="illus-card" style="margin-bottom:16px;">
+    <div style="display:flex;align-items:center;gap:12px;margin-bottom:16px;">
+      <div style="width:44px;height:44px;border-radius:12px;background:#1877F2;display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="white"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+      </div>
+      <div>
+        <div style="font-family:'Bebas Neue',sans-serif;font-size:1.4rem;color:#FFD700;letter-spacing:1px;">Facebook</div>
+        <div style="color:#888;font-size:0.78rem;">Melhor rede para ganhar — maior alcance em Angola</div>
+      </div>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:10px;">
+      <div style="display:flex;gap:12px;align-items:flex-start;"><div style="width:24px;height:24px;border-radius:50%;background:#1877F2;color:#fff;font-weight:900;font-size:0.75rem;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:2px;">1</div><div style="color:#bbb;font-size:0.88rem;">Regista-te no <strong style="color:#FFD700;">Monetag.com</strong> e vai a <strong style="color:#fff;">Publishers → SmartLink</strong>. Copia o teu link único.</div></div>
+      <div style="display:flex;gap:12px;align-items:flex-start;"><div style="width:24px;height:24px;border-radius:50%;background:#1877F2;color:#fff;font-weight:900;font-size:0.75rem;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:2px;">2</div><div style="color:#bbb;font-size:0.88rem;">No Facebook, cria uma <strong style="color:#fff;">publicação nova</strong>. Não coloques o link directamente — escreve um texto interessante tipo: <em style="color:#aaa;">"Encontrei esta página incrível sobre como ganhar dinheiro em Angola 🇦🇴 Clica aqui:"</em></div></div>
+      <div style="display:flex;gap:12px;align-items:flex-start;"><div style="width:24px;height:24px;border-radius:50%;background:#1877F2;color:#fff;font-weight:900;font-size:0.75rem;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:2px;">3</div><div style="color:#bbb;font-size:0.88rem;">Cola o teu link no final do texto e publica. Depois <strong style="color:#FFD700;">dá like, comenta e partilha</strong> o teu próprio post logo a seguir.</div></div>
+      <div style="display:flex;gap:12px;align-items:flex-start;"><div style="width:24px;height:24px;border-radius:50%;background:#1877F2;color:#fff;font-weight:900;font-size:0.75rem;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:2px;">4</div><div style="color:#bbb;font-size:0.88rem;">Partilha também nos <strong style="color:#fff;">grupos do Facebook</strong> onde és membro — grupos de Angola, emprego, negócios. Cada grupo multiplica o alcance.</div></div>
+    </div>
+  </div>
+
+  <!-- WHATSAPP -->
+  <div class="illus-card" style="margin-bottom:16px;">
+    <div style="display:flex;align-items:center;gap:12px;margin-bottom:16px;">
+      <div style="width:44px;height:44px;border-radius:12px;background:#25D366;display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+      </div>
+      <div>
+        <div style="font-family:'Bebas Neue',sans-serif;font-size:1.4rem;color:#FFD700;letter-spacing:1px;">WhatsApp</div>
+        <div style="color:#888;font-size:0.78rem;">Status e grupos — muito eficaz em Angola</div>
+      </div>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:10px;">
+      <div style="display:flex;gap:12px;align-items:flex-start;"><div style="width:24px;height:24px;border-radius:50%;background:#25D366;color:#fff;font-weight:900;font-size:0.75rem;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:2px;">1</div><div style="color:#bbb;font-size:0.88rem;">Copia o teu SmartLink do Monetag.</div></div>
+      <div style="display:flex;gap:12px;align-items:flex-start;"><div style="width:24px;height:24px;border-radius:50%;background:#25D366;color:#fff;font-weight:900;font-size:0.75rem;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:2px;">2</div><div style="color:#bbb;font-size:0.88rem;">Vai ao teu <strong style="color:#fff;">Status do WhatsApp</strong> → clica no ícone de texto → escreve uma mensagem apelativa com o link. O status é visto por todos os teus contactos automaticamente.</div></div>
+      <div style="display:flex;gap:12px;align-items:flex-start;"><div style="width:24px;height:24px;border-radius:50%;background:#25D366;color:#fff;font-weight:900;font-size:0.75rem;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:2px;">3</div><div style="color:#bbb;font-size:0.88rem;">Envia também para os teus <strong style="color:#fff;">grupos de WhatsApp</strong> — grupos de família, amigos, bairro, trabalho. Cada grupo pode trazer dezenas de cliques.</div></div>
+      <div style="display:flex;gap:12px;align-items:flex-start;"><div style="width:24px;height:24px;border-radius:50%;background:#25D366;color:#fff;font-weight:900;font-size:0.75rem;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:2px;">4</div><div style="color:#bbb;font-size:0.88rem;"><strong style="color:#FFD700;">Repete todos os dias</strong> — o status expira em 24h, por isso publica um novo todos os dias para manter o fluxo de cliques constante.</div></div>
+    </div>
+  </div>
+
+  <!-- INSTAGRAM -->
+  <div class="illus-card" style="margin-bottom:16px;">
+    <div style="display:flex;align-items:center;gap:12px;margin-bottom:16px;">
+      <div style="width:44px;height:44px;border-radius:12px;background:radial-gradient(circle at 30% 110%, #fdf497 0%, #fd5949 45%, #d6249f 60%, #285AEB 90%);display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="white"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+      </div>
+      <div>
+        <div style="font-family:'Bebas Neue',sans-serif;font-size:1.4rem;color:#FFD700;letter-spacing:1px;">Instagram</div>
+        <div style="color:#888;font-size:0.78rem;">Link na bio + Stories — muito visual</div>
+      </div>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:10px;">
+      <div style="display:flex;gap:12px;align-items:flex-start;"><div style="width:24px;height:24px;border-radius:50%;background:linear-gradient(135deg,#fd5949,#d6249f);color:#fff;font-weight:900;font-size:0.75rem;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:2px;">1</div><div style="color:#bbb;font-size:0.88rem;">Vai ao teu perfil → <strong style="color:#fff;">Editar Perfil</strong> → no campo <strong style="color:#fff;">"Website"</strong> cola o teu SmartLink. Assim qualquer pessoa que visitar o teu perfil vê o link.</div></div>
+      <div style="display:flex;gap:12px;align-items:flex-start;"><div style="width:24px;height:24px;border-radius:50%;background:linear-gradient(135deg,#fd5949,#d6249f);color:#fff;font-weight:900;font-size:0.75rem;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:2px;">2</div><div style="color:#bbb;font-size:0.88rem;">Nas tuas publicações escreve sempre no final: <em style="color:#aaa;">"🔗 Link na bio!"</em> — isso direciona os seguidores para o teu link sem o partilhares directamente.</div></div>
+      <div style="display:flex;gap:12px;align-items:flex-start;"><div style="width:24px;height:24px;border-radius:50%;background:linear-gradient(135deg,#fd5949,#d6249f);color:#fff;font-weight:900;font-size:0.75rem;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:2px;">3</div><div style="color:#bbb;font-size:0.88rem;">Usa os <strong style="color:#fff;">Stories diários</strong> para lembrar os seguidores de clicar no link da bio. Um story por dia mantém o fluxo de visitas.</div></div>
+    </div>
+  </div>
+
+  <!-- TIKTOK -->
+  <div class="illus-card" style="margin-bottom:16px;">
+    <div style="display:flex;align-items:center;gap:12px;margin-bottom:16px;">
+      <div style="width:44px;height:44px;border-radius:12px;background:#000;border:1px solid #333;display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="white"><path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.88 2.5 2.89 2.89 0 01-2.89-2.89 2.89 2.89 0 012.89-2.89c.28 0 .54.04.79.1V9.01a6.33 6.33 0 00-.79-.05 6.34 6.34 0 00-6.34 6.34 6.34 6.34 0 006.34 6.34 6.34 6.34 0 006.33-6.34V8.69a8.18 8.18 0 004.78 1.52V6.76a4.85 4.85 0 01-1.01-.07z"/></svg>
+      </div>
+      <div>
+        <div style="font-family:'Bebas Neue',sans-serif;font-size:1.4rem;color:#FFD700;letter-spacing:1px;">TikTok</div>
+        <div style="color:#888;font-size:0.78rem;">Viral rápido — link na bio (conta Business)</div>
+      </div>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:10px;">
+      <div style="display:flex;gap:12px;align-items:flex-start;"><div style="width:24px;height:24px;border-radius:50%;background:#333;color:#fff;font-weight:900;font-size:0.75rem;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:2px;">1</div><div style="color:#bbb;font-size:0.88rem;">Para ter link na bio no TikTok precisas de uma <strong style="color:#FFD700;">conta Business</strong> — vai a <strong style="color:#fff;">Gerir conta → Mudar para conta Business</strong>. É gratuito.</div></div>
+      <div style="display:flex;gap:12px;align-items:flex-start;"><div style="width:24px;height:24px;border-radius:50%;background:#333;color:#fff;font-weight:900;font-size:0.75rem;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:2px;">2</div><div style="color:#bbb;font-size:0.88rem;">Vai a <strong style="color:#fff;">Editar Perfil → Website</strong> e cola o teu SmartLink. Agora aparece na tua bio.</div></div>
+      <div style="display:flex;gap:12px;align-items:flex-start;"><div style="width:24px;height:24px;border-radius:50%;background:#333;color:#fff;font-weight:900;font-size:0.75rem;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:2px;">3</div><div style="color:#bbb;font-size:0.88rem;">Em cada vídeo que fizeres, diz no final: <em style="color:#aaa;">"Link na bio para saberes mais!"</em> — o TikTok tem um alcance enorme e um só vídeo pode trazer centenas de cliques.</div></div>
+    </div>
+  </div>
+
+  <!-- TELEGRAM -->
+  <div class="illus-card" style="margin-bottom:16px;">
+    <div style="display:flex;align-items:center;gap:12px;margin-bottom:16px;">
+      <div style="width:44px;height:44px;border-radius:12px;background:#229ED9;display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="white"><path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/></svg>
+      </div>
+      <div>
+        <div style="font-family:'Bebas Neue',sans-serif;font-size:1.4rem;color:#FFD700;letter-spacing:1px;">Telegram</div>
+        <div style="color:#888;font-size:0.78rem;">Grupos e canais — audiência fiel e directa</div>
+      </div>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:10px;">
+      <div style="display:flex;gap:12px;align-items:flex-start;"><div style="width:24px;height:24px;border-radius:50%;background:#229ED9;color:#fff;font-weight:900;font-size:0.75rem;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:2px;">1</div><div style="color:#bbb;font-size:0.88rem;">Cria um <strong style="color:#fff;">Canal no Telegram</strong> — vai a Menu → Novo Canal. Dá um nome apelativo tipo <em style="color:#aaa;">"Ganhar Dinheiro em Angola 🇦🇴"</em>.</div></div>
+      <div style="display:flex;gap:12px;align-items:flex-start;"><div style="width:24px;height:24px;border-radius:50%;background:#229ED9;color:#fff;font-weight:900;font-size:0.75rem;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:2px;">2</div><div style="color:#bbb;font-size:0.88rem;">Convida os teus contactos para o canal. Publica dicas sobre ganhar dinheiro online e inclui o teu SmartLink nas publicações.</div></div>
+      <div style="display:flex;gap:12px;align-items:flex-start;"><div style="width:24px;height:24px;border-radius:50%;background:#229ED9;color:#fff;font-weight:900;font-size:0.75rem;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:2px;">3</div><div style="color:#bbb;font-size:0.88rem;">Partilha o link do teu canal nos grupos de Telegram de Angola. Cada novo membro do canal é um clique potencial todos os dias.</div></div>
+    </div>
+  </div>
+
+  <!-- TWITTER/X -->
+  <div class="illus-card">
+    <div style="display:flex;align-items:center;gap:12px;margin-bottom:16px;">
+      <div style="width:44px;height:44px;border-radius:12px;background:#000;border:1px solid #333;display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="white"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.747l7.73-8.835L1.254 2.25H8.08l4.253 5.622zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+      </div>
+      <div>
+        <div style="font-family:'Bebas Neue',sans-serif;font-size:1.4rem;color:#FFD700;letter-spacing:1px;">Twitter / X</div>
+        <div style="color:#888;font-size:0.78rem;">CPM alto — público internacional</div>
+      </div>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:10px;">
+      <div style="display:flex;gap:12px;align-items:flex-start;"><div style="width:24px;height:24px;border-radius:50%;background:#333;color:#fff;font-weight:900;font-size:0.75rem;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:2px;">1</div><div style="color:#bbb;font-size:0.88rem;">No teu perfil vai a <strong style="color:#fff;">Editar Perfil → Website</strong> e cola o SmartLink. Fica visível para todos os que visitam o teu perfil.</div></div>
+      <div style="display:flex;gap:12px;align-items:flex-start;"><div style="width:24px;height:24px;border-radius:50%;background:#333;color:#fff;font-weight:900;font-size:0.75rem;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:2px;">2</div><div style="color:#bbb;font-size:0.88rem;">Publica tweets sobre temas populares em Angola e no fim inclui o link. Usa <strong style="color:#FFD700;">#Angola #GanharDinheiro</strong> para aparecer nas pesquisas.</div></div>
+      <div style="display:flex;gap:12px;align-items:flex-start;"><div style="width:24px;height:24px;border-radius:50%;background:#333;color:#fff;font-weight:900;font-size:0.75rem;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:2px;">3</div><div style="color:#bbb;font-size:0.88rem;">O Twitter tem visitantes de países como EUA, UK, Canadá que pagam <strong style="color:#FFD700;">CPM muito mais alto</strong> — um clique de lá pode valer 10x mais do que um clique local.</div></div>
+    </div>
+  </div>
+
+</div>
+
+
+<!-- QUANTO PODES GANHAR -->
+<div class="section">
+  <div class="section-label">Expectativas reais</div>
+  <h2>Quanto podes<br>ganhar?</h2>
+  <p>Os ganhos dependem de quantas pessoas clicam no teu link e de onde elas são. Aqui vão estimativas realistas para Angola:</p>
+
+  <div class="illus-card">
+    <span class="illus-big">📊</span>
+    <h3>Estimativa por cliques diários</h3>
+    <p style="margin-bottom:16px;">Com CPM médio de $1.00 e 3 plataformas activas:</p>
+    <div style="display:grid;gap:10px;">
+      <div style="display:flex;justify-content:space-between;padding:12px 16px;background:#0f0f0f;border-radius:10px;align-items:center;">
+        <span style="color:#888;font-size:0.9rem;">10 cliques/dia</span>
+        <span style="color:#FFD700;font-weight:900;">~$0.09/dia · ~$2.70/mês</span>
+      </div>
+      <div style="display:flex;justify-content:space-between;padding:12px 16px;background:#0f0f0f;border-radius:10px;align-items:center;">
+        <span style="color:#888;font-size:0.9rem;">50 cliques/dia</span>
+        <span style="color:#FFD700;font-weight:900;">~$0.45/dia · ~$13.50/mês</span>
+      </div>
+      <div style="display:flex;justify-content:space-between;padding:12px 16px;background:#0f0f0f;border-radius:10px;align-items:center;">
+        <span style="color:#888;font-size:0.9rem;">200 cliques/dia</span>
+        <span style="color:#FFD700;font-weight:900;">~$1.80/dia · ~$54/mês</span>
+      </div>
+      <div style="display:flex;justify-content:space-between;padding:12px 16px;background:#0f0f0f;border-radius:10px;align-items:center;">
+        <span style="color:#888;font-size:0.9rem;">500 cliques/dia</span>
+        <span style="color:#FFD700;font-weight:900;">~$4.50/dia · ~$135/mês</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="highlight">
+    <span class="highlight-icon">⚠️</span>
+    <h4>Sê honesto contigo mesmo</h4>
+    <p>Não vais ficar rico de um dia para o outro. Mas com consistência e boa estratégia de partilha, é possível ter um rendimento extra real todos os meses — sem investir nada.</p>
+  </div>
+</div>
+
+<hr class="divider">
+
+<!-- FAQ -->
+<div class="section">
+  <div class="section-label">Dúvidas frequentes</div>
+  <h2>Perguntas &<br>Respostas</h2>
+
+  <div class="faq-item">
+    <div class="faq-q"><span>❓</span> Preciso de pagar alguma coisa para começar?</div>
+    <div class="faq-a">Não. As três plataformas são completamente gratuitas. Não precisas de cartão de crédito, não precisas de investir nada. Só te registas e começas.</div>
+  </div>
+
+  <div class="faq-item">
+    <div class="faq-q"><span>❓</span> Preciso de ter muitos seguidores?</div>
+    <div class="faq-a">Não é obrigatório. Com 50 a 100 amigos activos no Facebook ou WhatsApp já consegues resultados. O mais importante é partilhar conteúdo interessante que faça as pessoas clicar.</div>
+  </div>
+
+  <div class="faq-item">
+    <div class="faq-q"><span>❓</span> Angola é aceite nestas plataformas?</div>
+    <div class="faq-a">Sim. As três plataformas — Monetag, Adsterra e Hilltopads — aceitam publishers de Angola sem restrições.</div>
+  </div>
+
+  <div class="faq-item">
+    <div class="faq-q"><span>❓</span> Como recebo o dinheiro em Kwanzas?</div>
+    <div class="faq-a">As plataformas pagam em USDT (dólar digital estável). Tu recebes na tua carteira Binance e depois vendes via Binance P2P para receber em Kwanzas directamente na tua conta bancária ou pelo Multicaixa.</div>
+  </div>
+
+  <div class="faq-item">
+    <div class="faq-q"><span>❓</span> Posso usar as três plataformas ao mesmo tempo?</div>
+    <div class="faq-a">Sim! É mesmo recomendado. Cada plataforma paga de forma independente. Usar as três significa que cada clique pode gerar receita em três sítios diferentes — triplicando os teus ganhos potenciais.</div>
+  </div>
+
+  <div class="faq-item">
+    <div class="faq-q"><span>❓</span> Isto é legal? Não é burla?</div>
+    <div class="faq-a">É 100% legal. É exactamente o mesmo modelo que os grandes sites de notícias e YouTube usam para ganhar dinheiro — publicidade. Tu és simplesmente o intermediário que traz as pessoas até aos anúncios.</div>
+  </div>
+
+  <div class="faq-item">
+    <div class="faq-q"><span>❓</span> Quanto tempo demora a começar a ganhar?</div>
+    <div class="faq-a">No mesmo dia que te registares e partilhares o teu link pela primeira vez. Os ganhos aparecem no painel em tempo real. O primeiro saque só é possível quando atinges o mínimo de $5.</div>
+  </div>
+</div>
+
+<!-- CTA FINAL -->
+<div class="cta-final">
+  <h2>Pronto para<br>começar?</h2>
+  <p>Regista-te numa das plataformas acima, copia o teu link e partilha já hoje. O primeiro cêntimo pode aparecer ainda hoje.</p>
+  <a href="https://monetag.com/?ref_id=t3Ia" target="_blank" style="display:inline-block;background:linear-gradient(135deg,#FFD700,#FFA500);color:#000;font-weight:900;font-size:1rem;padding:16px 40px;border-radius:999px;text-decoration:none;box-shadow:0 0 30px rgba(255,165,0,0.3);">
+    Começar com Monetag →
+  </a>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="LombongoOnline — Ganha dinheiro real na internet com plataformas gratuitas. Compatível com Angola. Saques via Binance P2P em Kwanzas.">
+<meta name="keywords" content="ganhar dinheiro online Angola, plataformas GPT Angola, Bitcoin Angola, Freecash Angola, TimeBucks Angola">
+<title>LombongoOnline – Ganha Dinheiro na Internet</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Nunito:wght@400;600;700;900&display=swap" rel="stylesheet">
+<style>
+  :root{--gold:#FFD700;--gold2:#FFA500;--red:#CC0000;--dark:#0a0a0a;--dark2:#111;--card:#161616;--text:#f0f0f0;--muted:#888;}
+  *{margin:0;padding:0;box-sizing:border-box;}
+  body{background:var(--dark);color:var(--text);font-family:'Nunito',sans-serif;overflow-x:hidden;}
+
+  /* COOKIE BANNER */
+  #cookie-banner{position:fixed;bottom:0;left:0;right:0;z-index:9999;background:#111;border-top:1px solid #2a2a2a;padding:16px 20px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;box-shadow:0 -4px 30px rgba(0,0,0,0.5);transform:translateY(100%);animation:slideUp 0.5s 1.5s ease forwards;}
+  @keyframes slideUp{to{transform:translateY(0);}}
+  #cookie-banner p{color:#aaa;font-size:0.82rem;line-height:1.5;flex:1;min-width:200px;}
+  #cookie-banner a{color:var(--gold);text-decoration:none;}
+  .cookie-btns{display:flex;gap:10px;flex-shrink:0;}
+  .btn-ca{background:linear-gradient(135deg,var(--gold),var(--gold2));color:#000;font-weight:900;font-size:0.85rem;padding:10px 20px;border-radius:8px;border:none;cursor:pointer;}
+  .btn-cr{background:transparent;color:var(--muted);font-size:0.85rem;padding:10px 16px;border:1px solid #333;border-radius:8px;cursor:pointer;}
+
+  /* NAV */
+  nav{position:sticky;top:0;z-index:100;background:rgba(10,10,10,0.95);backdrop-filter:blur(12px);border-bottom:1px solid #1a1a1a;display:flex;align-items:center;justify-content:space-between;padding:14px 24px;flex-wrap:wrap;gap:10px;}
+  .logo{font-family:'Bebas Neue',sans-serif;font-size:2rem;letter-spacing:2px;background:linear-gradient(90deg,var(--gold),var(--gold2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;display:flex;align-items:center;gap:6px;}
+  .logo-i{font-size:1.5rem;-webkit-text-fill-color:initial;}
+  .logo span{-webkit-text-fill-color:var(--red);}
+  .nav-links{display:flex;gap:20px;}
+  .nav-links a{color:var(--muted);text-decoration:none;font-size:0.78rem;font-weight:700;letter-spacing:1px;text-transform:uppercase;transition:color 0.2s;}
+  .nav-links a:hover{color:var(--gold);}
+
+  /* TICKER */
+  .ticker-wrap{background:var(--red);overflow:hidden;padding:8px 0;}
+  .ticker{display:flex;animation:ticker 30s linear infinite;white-space:nowrap;}
+  .ticker span{font-size:0.8rem;font-weight:700;letter-spacing:2px;text-transform:uppercase;padding:0 40px;}
+  @keyframes ticker{from{transform:translateX(100vw)}to{transform:translateX(-100%)}}
+
+  /* HERO — ocupa 100vh para que o conteúdo abaixo só apareça ao fazer scroll */
+  .hero{position:relative;min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:20px 24px;overflow:hidden;}
+  .hero-glow{position:absolute;width:700px;height:700px;border-radius:50%;background:radial-gradient(circle,rgba(255,165,0,0.12) 0%,transparent 70%);top:50%;left:50%;transform:translate(-50%,-50%);animation:pulse 4s ease-in-out infinite;}
+  @keyframes pulse{0%,100%{transform:translate(-50%,-50%) scale(1);}50%{transform:translate(-50%,-50%) scale(1.15);}}
+  .hero-tag{position:relative;display:inline-block;background:var(--red);color:#fff;font-size:0.72rem;font-weight:900;letter-spacing:3px;text-transform:uppercase;padding:6px 18px;border-radius:999px;margin-bottom:24px;animation:fadeUp 0.6s ease both;}
+  .hero h1{position:relative;font-family:'Bebas Neue',sans-serif;font-size:clamp(3.5rem,14vw,8rem);line-height:0.92;letter-spacing:3px;background:linear-gradient(135deg,#FFD700 0%,#FFA500 50%,#FF6B00 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;animation:fadeUp 0.7s 0.1s ease both;}
+  .hero h2{position:relative;font-size:clamp(1rem,3vw,1.4rem);font-weight:600;color:#ccc;margin:20px 0 40px;animation:fadeUp 0.7s 0.2s ease both;}
+  .hero-btns{position:relative;display:flex;gap:14px;flex-wrap:wrap;justify-content:center;animation:fadeUp 0.7s 0.3s ease both;}
+  @keyframes fadeUp{from{opacity:0;transform:translateY(30px)}to{opacity:1;transform:translateY(0)}}
+
+  .btn-gold{background:linear-gradient(135deg,var(--gold),var(--gold2));color:#000;font-weight:900;font-size:1.05rem;padding:16px 36px;border-radius:999px;text-decoration:none;box-shadow:0 0 30px rgba(255,165,0,0.35);transition:transform 0.2s,box-shadow 0.2s;}
+  .btn-gold:hover{transform:translateY(-4px);box-shadow:0 0 50px rgba(255,165,0,0.55);}
+  .btn-outline{border:2px solid #333;color:var(--text);font-weight:700;font-size:1.05rem;padding:16px 36px;border-radius:999px;text-decoration:none;transition:border-color 0.2s,color 0.2s;}
+  .btn-outline:hover{border-color:var(--gold);color:var(--gold);}
+
+  /* AD */
+  .ad-box{background:#111;border:none;border-radius:12px;display:flex;align-items:center;justify-content:center;color:#222;font-size:0.72rem;letter-spacing:2px;text-transform:uppercase;}
+
+  /* STATS */
+  .stats-bar{background:var(--dark2);border-top:1px solid #1a1a1a;border-bottom:1px solid #1a1a1a;padding:28px 24px;display:flex;justify-content:center;gap:60px;flex-wrap:wrap;}
+  .stat{text-align:center;}
+  .stat-num{font-family:'Bebas Neue',sans-serif;font-size:2.6rem;color:var(--gold);display:block;line-height:1;}
+  .stat-label{font-size:0.72rem;color:var(--muted);letter-spacing:2px;text-transform:uppercase;}
+
+  /* SECTIONS */
+  .sec{padding:60px 24px;}
+  .sec-dark{background:var(--dark2);border-top:1px solid #1a1a1a;border-bottom:1px solid #1a1a1a;}
+  .sec-title{font-family:'Bebas Neue',sans-serif;font-size:clamp(2rem,6vw,3rem);letter-spacing:2px;text-align:center;margin-bottom:8px;}
+  .sec-sub{text-align:center;color:var(--muted);margin-bottom:40px;font-size:0.9rem;}
+
+  /* TESTIMONIALS */
+  .testi-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px;max-width:1000px;margin:0 auto;}
+  .testi-card{background:var(--card);border:1px solid #1e1e1e;border-radius:14px;padding:24px;transition:border-color 0.3s;}
+  .testi-card:hover{border-color:#333;}
+  .testi-stars{color:var(--gold);font-size:0.9rem;margin-bottom:10px;}
+  .testi-text{color:#bbb;font-size:0.88rem;line-height:1.7;margin-bottom:16px;font-style:italic;}
+  .testi-author{display:flex;align-items:center;gap:12px;}
+  .testi-avatar{width:40px;height:40px;border-radius:50%;background:linear-gradient(135deg,var(--gold),var(--red));display:flex;align-items:center;justify-content:center;font-family:'Bebas Neue',sans-serif;font-size:1.2rem;color:#000;flex-shrink:0;}
+  .testi-name{font-weight:900;font-size:0.88rem;}
+  .testi-loc{color:var(--muted);font-size:0.78rem;}
+
+  /* WHY */
+  .why-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px;max-width:1000px;margin:0 auto;}
+  .why-card{background:var(--card);border:1px solid #1e1e1e;border-radius:14px;padding:24px;text-align:center;}
+  .why-icon{font-size:2.2rem;margin-bottom:12px;display:block;}
+  .why-title{font-family:'Bebas Neue',sans-serif;font-size:1.2rem;letter-spacing:1px;color:var(--gold);margin-bottom:6px;}
+  .why-desc{color:#aaa;font-size:0.84rem;line-height:1.6;}
+
+  /* FOOTER */
+  footer{background:#080808;border-top:1px solid #1a1a1a;padding:50px 24px 30px;color:var(--muted);}
+  .footer-inner{max-width:1000px;margin:0 auto;}
+  .footer-top{display:grid;grid-template-columns:2fr 1fr 1fr;gap:40px;margin-bottom:40px;}
+  .f-logo-big{font-family:'Bebas Neue',sans-serif;font-size:2rem;background:linear-gradient(90deg,var(--gold),var(--gold2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;display:block;margin-bottom:10px;}
+  .f-brand p{font-size:0.84rem;color:#555;line-height:1.7;max-width:260px;}
+  .f-col h4{font-family:'Bebas Neue',sans-serif;font-size:1rem;letter-spacing:2px;color:var(--gold);margin-bottom:14px;}
+  .f-col a{display:block;color:#555;text-decoration:none;font-size:0.84rem;margin-bottom:8px;transition:color 0.2s;}
+  .f-col a:hover{color:var(--gold);}
+  .footer-bottom{border-top:1px solid #111;padding-top:20px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px;font-size:0.78rem;color:#333;}
+  .footer-bottom a{color:#333;text-decoration:none;}
+  .footer-bottom a:hover{color:var(--gold);}
+
+  .nav-links a.nav-rec{color:var(--gold);border:1px solid rgba(255,215,0,0.3);padding:4px 12px;border-radius:999px;}
+  .nav-links a.nav-rec:hover{background:rgba(255,215,0,0.1);}
+
+
+
+  /* APOIA-ME BUTTON BAR */
+  .apoiame-bar{background:#111;border-bottom:1px solid #1a1a1a;padding:8px 24px;display:flex;align-items:center;justify-content:space-between;}
+  .btn-apoiame{display:inline-flex;align-items:center;gap:6px;background:linear-gradient(135deg,#FFD700,#FFA500);color:#000;font-weight:900;font-size:0.72rem;letter-spacing:1px;text-transform:uppercase;padding:6px 15px;border-radius:999px;text-decoration:none;box-shadow:0 0 18px rgba(255,165,0,0.3);transition:transform 0.2s,box-shadow 0.2s;}
+  .btn-apoiame:hover{transform:translateY(-2px);box-shadow:0 0 30px rgba(255,165,0,0.5);}
+</style>
+
+  <!-- MONETAG ONCLICK (zona original) -->
+  <script>(function(s){s.dataset.zone='10951387',s.src='https://al5sm.com/tag.min.js'})([document.documentElement, document.body].filter(Boolean).pop().appendChild(document.createElement('script')))</script>
+  <!-- MONETAG VIGNETTE (nova zona 10958760) -->
+  <script>(function(s){s.dataset.zone='10958760',s.src='https://n6wxm.com/vignette.min.js'})([document.documentElement, document.body].filter(Boolean).pop().appendChild(document.createElement('script')))</script>
+  <!-- MONETAG TAG inline (nova zona 10958748) -->
+  
+<meta name="referrer" content="no-referrer-when-downgrade" />
+<script>(function(s){s.dataset.zone='10951387',s.src='https://al5sm.com/tag.min.js'})([document.documentElement, document.body].filter(Boolean).pop().appendChild(document.createElement('script')))</script>
+<script src="https://5gvci.com/act/files/tag.min.js?z=10951410" data-cfasync="false" async></script>
+<script>(function(s){s.dataset.zone='10958760',s.src='https://n6wxm.com/vignette.min.js'})([document.documentElement, document.body].filter(Boolean).pop().appendChild(document.createElement('script')))</script>
+<script>(function(s){s.dataset.zone='10985009',s.src='https://nap5k.com/tag.min.js'})([document.documentElement, document.body].filter(Boolean).pop().appendChild(document.createElement('script')))</script>
+</head>
+<body>
+
+
+
+<!-- COOKIE BANNER -->
+<div id="cookie-banner">
+  <p>🍪 Usamos cookies para melhorar a tua experiência e exibir anúncios. Ao continuar, aceitas a nossa <a href="politica-privacidade.html">Política de Privacidade</a>.</p>
+  <div class="cookie-btns">
+    <button class="btn-cr" onclick="closeCookie()">Rejeitar</button>
+    <button class="btn-ca" onclick="acceptCookie()">✅ Aceitar Cookies</button>
+  </div>
+</div>
+
+<!-- NAV -->
+<nav>
+  <div class="logo"><span class="logo-i">💰</span>Lombongo<span>Online</span></div>
+</nav>
+
+<!-- TICKER -->
+<div class="ticker-wrap">
+  <div class="ticker">
+    <span>💰 Ganha dinheiro real na internet</span>
+    <span>🔥 +20 plataformas gratuitas</span>
+    <span>🇦🇴 Compatível com Angola</span>
+    <span>₿ Saques via Binance P2P em Kwanzas</span>
+    <span>✅ 100% Gratuito — sem investimento</span>
+    <span>💰 Ganha dinheiro real na internet</span>
+    <span>🔥 +20 plataformas gratuitas</span>
+  </div>
+</div>
+
+
+<!-- APOIA-ME BAR -->
+<div class="apoiame-bar">
+  <a href="https://omg10.com/4/10959986" target="_blank" class="btn-apoiame">❤️ Apoia-me 🙏</a>
+  <a href="carteira-digital.html" target="_blank" class="btn-apoiame">💳 Carteira Digital</a>
+</div>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-glow"></div>
+  <div class="hero-tag">🇦🇴 Feito para Angola</div>
+  <h1>LOMBONGO<br>ONLINE</h1>
+  <h2>Ganha dinheiro real na internet —<br>sem investimento, sem truques.</h2>
+  <div class="hero-btns">
+    <a href="plataformas.html" target="_blank" class="btn-gold">🚀 Ver Plataformas</a>
+    <a href="https://lombongobetia.vercel.app/" target="_blank" style="display:inline-flex;align-items:center;gap:8px;background:linear-gradient(135deg,#CC0000,#aa0000);color:#fff;font-weight:900;font-size:1.05rem;padding:16px 36px;border-radius:999px;text-decoration:none;box-shadow:0 0 30px rgba(204,0,0,0.4);transition:transform 0.2s,box-shadow 0.2s;" onmouseover="this.style.transform='translateY(-4px)';this.style.boxShadow='0 0 50px rgba(204,0,0,0.6)'" onmouseout="this.style.transform='';this.style.boxShadow='0 0 30px rgba(204,0,0,0.4)'">⚡ LombongoBetIA</a>
+    <a href="ganhar-redes-sociais.html" class="btn-outline" style="border:2px solid #FFA500;color:#FFA500;font-weight:900;font-size:1.05rem;padding:16px 36px;border-radius:999px;text-decoration:none;">📱 Ganhar com Redes Sociais</a>
+    <a href="como-funciona.html" target="_blank" class="btn-outline">❓ Como funciona?</a>
+  </div>
+
+<!-- Modal Redes Sociais -->
+<div id="modalRedes" style="display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.85);z-index:9999;overflow-y:auto;">
+  <div style="max-width:480px;margin:40px auto;background:#1a1a1a;border-radius:20px;padding:32px 24px;position:relative;border:1px solid #FFA500;">
+    <button onclick="fecharModal()" style="position:absolute;top:16px;right:16px;background:transparent;border:none;color:#aaa;font-size:1.5rem;cursor:pointer;">✕</button>
+    <div style="text-align:center;margin-bottom:24px;">
+      <div style="font-size:2rem;margin-bottom:8px;">📱</div>
+      <h2 style="font-family:'Bebas Neue',sans-serif;font-size:2rem;background:linear-gradient(135deg,#FFD700,#FFA500);-webkit-background-clip:text;-webkit-text-fill-color:transparent;letter-spacing:2px;">Monetiza as tuas Redes Sociais</h2>
+      <p style="color:#aaa;font-size:0.9rem;margin-top:8px;">Tens Facebook, Instagram, WhatsApp ou TikTok? Podes ganhar dinheiro com eles — mesmo sem muitos seguidores.</p>
+    </div>
+
+    <!-- Monetag -->
+    <div style="background:#111;border:1px solid #333;border-radius:14px;padding:20px;margin-bottom:14px;">
+      <div style="display:flex;align-items:center;gap:12px;margin-bottom:10px;">
+        <span style="font-size:1.8rem;">💰</span>
+        <div>
+          <div style="font-weight:900;color:#FFD700;font-size:1rem;">Monetag</div>
+          <div style="font-size:0.75rem;color:#666;">Monetização de tráfego</div>
+        </div>
+      </div>
+      <p style="color:#bbb;font-size:0.85rem;line-height:1.6;margin-bottom:14px;">Partilha o teu link único nas tuas redes sociais. Cada vez que alguém clicar e visitar páginas, tu ganhas dinheiro automaticamente.</p>
+      <div style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:14px;">
+        <span style="background:#FFD70022;color:#FFD700;font-size:0.72rem;padding:4px 10px;border-radius:999px;border:1px solid #FFD70033;">✅ Gratuito</span>
+        <span style="background:#FFD70022;color:#FFD700;font-size:0.72rem;padding:4px 10px;border-radius:999px;border:1px solid #FFD70033;">📱 Redes Sociais</span>
+        <span style="background:#FFD70022;color:#FFD700;font-size:0.72rem;padding:4px 10px;border-radius:999px;border:1px solid #FFD70033;">₿ Paga em Crypto</span>
+      </div>
+      <a href="https://monetag.com" target="_blank" style="display:block;background:linear-gradient(135deg,#FFD700,#FFA500);color:#000;font-weight:900;font-size:0.85rem;padding:11px;border-radius:10px;text-align:center;text-decoration:none;">Criar Conta Grátis →</a>
+    </div>
+
+    <!-- Adsterra -->
+    <div style="background:#111;border:1px solid #333;border-radius:14px;padding:20px;margin-bottom:14px;">
+      <div style="display:flex;align-items:center;gap:12px;margin-bottom:10px;">
+        <span style="font-size:1.8rem;">📊</span>
+        <div>
+          <div style="font-weight:900;color:#FFD700;font-size:1rem;">Adsterra</div>
+          <div style="font-size:0.75rem;color:#666;">Rede de anúncios global</div>
+        </div>
+      </div>
+      <p style="color:#bbb;font-size:0.85rem;line-height:1.6;margin-bottom:14px;">Uma das maiores redes de anúncios do mundo. Aceita tráfego de redes sociais e paga semanalmente via USDT.</p>
+      <div style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:14px;">
+        <span style="background:#FFD70022;color:#FFD700;font-size:0.72rem;padding:4px 10px;border-radius:999px;border:1px solid #FFD70033;">✅ Gratuito</span>
+        <span style="background:#FFD70022;color:#FFD700;font-size:0.72rem;padding:4px 10px;border-radius:999px;border:1px solid #FFD70033;">🌍 Global</span>
+        <span style="background:#FFD70022;color:#FFD700;font-size:0.72rem;padding:4px 10px;border-radius:999px;border:1px solid #FFD70033;">💵 USDT</span>
+      </div>
+      <a href="https://adsterra.com" target="_blank" style="display:block;background:linear-gradient(135deg,#FFD700,#FFA500);color:#000;font-weight:900;font-size:0.85rem;padding:11px;border-radius:10px;text-align:center;text-decoration:none;">Criar Conta Grátis →</a>
+    </div>
+
+    <!-- Hilltopads -->
+    <div style="background:#111;border:1px solid #333;border-radius:14px;padding:20px;margin-bottom:24px;">
+      <div style="display:flex;align-items:center;gap:12px;margin-bottom:10px;">
+        <span style="font-size:1.8rem;">🚀</span>
+        <div>
+          <div style="font-weight:900;color:#FFD700;font-size:1rem;">Hilltopads</div>
+          <div style="font-size:0.75rem;color:#666;">MultiTag automático</div>
+        </div>
+      </div>
+      <p style="color:#bbb;font-size:0.85rem;line-height:1.6;margin-bottom:14px;">Sistema inteligente que escolhe automaticamente o anúncio mais lucrativo. Funciona em qualquer dispositivo sem configuração.</p>
+      <div style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:14px;">
+        <span style="background:#FFD70022;color:#FFD700;font-size:0.72rem;padding:4px 10px;border-radius:999px;border:1px solid #FFD70033;">✅ Gratuito</span>
+        <span style="background:#FFD70022;color:#FFD700;font-size:0.72rem;padding:4px 10px;border-radius:999px;border:1px solid #FFD70033;">🤖 Automático</span>
+        <span style="background:#FFD70022;color:#FFD700;font-size:0.72rem;padding:4px 10px;border-radius:999px;border:1px solid #FFD70033;">📱 Mobile</span>
+      </div>
+      <a href="https://hilltopads.com" target="_blank" style="display:block;background:linear-gradient(135deg,#FFD700,#FFA500);color:#000;font-weight:900;font-size:0.85rem;padding:11px;border-radius:10px;text-align:center;text-decoration:none;">Criar Conta Grátis →</a>
+    </div>
+
+    <button onclick="fecharModal()" style="width:100%;padding:14px;background:transparent;border:2px solid #333;border-radius:999px;color:#aaa;font-weight:700;cursor:pointer;font-size:0.9rem;">Fechar</button>
+  </div>
+</div>
+
+<script>
+function abrirModal(){ document.getElementById('modalRedes').style.display='block'; document.body.style.overflow='hidden'; }
+function fecharModal(){ document.getElementById('modalRedes').style.display='none'; document.body.style.overflow='auto'; }
+document.getElementById('modalRedes').addEventListener('click', function(e){ if(e.target===this) fecharModal(); });
+</script>
+</div>
+
+<!-- AD 728x90 -->
+<div style="padding:20px 24px;">
+  <div class="ad-box" style="height:90px;max-width:728px;margin:0 auto;">
+    <!-- CÓDIGO MONETAG / ADSTERRA 728×90 -->
+    <ins class="monetag-ad" data-zone="10951387" style="display:inline-block;width:728px;height:90px;max-width:100%;"></ins>
+  </div>
+</div>
+
+<!-- STATS -->
+<div class="stats-bar">
+  <div class="stat"><span class="stat-num">20+</span><span class="stat-label">Plataformas</span></div>
+  <div class="stat"><span class="stat-num">100%</span><span class="stat-label">Gratuito</span></div>
+  <div class="stat"><span class="stat-num">$0</span><span class="stat-label">Para Começar</span></div>
+  <div class="stat"><span class="stat-num">₿</span><span class="stat-label">Saque em Cripto</span></div>
+</div>
+
+<!-- AD 300x250 -->
+<div style="padding:24px;">
+  <div class="ad-box" style="height:250px;max-width:300px;margin:0 auto;">
+    <!-- CÓDIGO 300×250 -->
+    <ins class="monetag-ad" data-zone="10951387" style="display:inline-block;width:300px;height:250px;max-width:100%;"></ins>
+  </div>
+</div>
+
+
+<div class="sec">
+  <div class="sec-title">💬 O QUE DIZEM OS NOSSOS LEITORES</div>
+  <div class="sec-sub">Angolanos que já estão a ganhar com as nossas recomendações</div>
+  <div class="testi-grid">
+    <div class="testi-card">
+      <div class="testi-stars">★★★★★</div>
+      <p class="testi-text">"Comecei com o Freecash há dois meses e já saquei mais de $30 em Bitcoin. Nunca pensei que fosse possível ganhar dinheiro online assim."</p>
+      <div class="testi-author"><div class="testi-avatar">J</div><div><div class="testi-name">João M.</div><div class="testi-loc">📍 Luanda</div></div></div>
+    </div>
+    <div class="testi-card">
+      <div class="testi-stars">★★★★★</div>
+      <p class="testi-text">"O Honeygain é incrível! Deixo o telemóvel a carregar de noite e quando acordo já tenho ganhos acumulados. Dinheiro passivo real!"</p>
+      <div class="testi-author"><div class="testi-avatar">A</div><div><div class="testi-name">Ana S.</div><div class="testi-loc">📍 Viana, Luanda</div></div></div>
+    </div>
+    <div class="testi-card">
+      <div class="testi-stars">★★★★☆</div>
+      <p class="testi-text">"Uso o TimeBucks todos os dias há 3 meses. Já saquei via Binance P2P e funcionou perfeitamente. O streak diário é muito motivante!"</p>
+      <div class="testi-author"><div class="testi-avatar">C</div><div><div class="testi-name">Carlos F.</div><div class="testi-loc">📍 Cazenga, Luanda</div></div></div>
+    </div>
+    <div class="testi-card">
+      <div class="testi-stars">★★★★★</div>
+      <p class="testi-text">"Não sabia nada de cripto mas o guia explicou tudo passo a passo. Agora uso a Binance P2P sem problemas para converter em Kwanzas."</p>
+      <div class="testi-author"><div class="testi-avatar">M</div><div><div class="testi-name">Maria T.</div><div class="testi-loc">📍 Kilamba, Luanda</div></div></div>
+    </div>
+    <div class="testi-card">
+      <div class="testi-stars">★★★★☆</div>
+      <p class="testi-text">"Uso o FireFaucet enquanto trabalho no computador. É dinheiro extra sem esforço nenhum. Recomendo muito o LombongoOnline!"</p>
+      <div class="testi-author"><div class="testi-avatar">P</div><div><div class="testi-name">Pedro A.</div><div class="testi-loc">📍 Talatona, Luanda</div></div></div>
+    </div>
+    <div class="testi-card">
+      <div class="testi-stars">★★★★★</div>
+      <p class="testi-text">"As informações são claras e honestas. Já experimentei 4 plataformas daqui e todas pagaram como prometido. Excelente trabalho!"</p>
+      <div class="testi-author"><div class="testi-avatar">R</div><div><div class="testi-name">Rosa N.</div><div class="testi-loc">📍 Benfica, Luanda</div></div></div>
+    </div>
+  </div>
+</div>
+
+<!-- PORQUE NOS -->
+<div class="sec sec-dark">
+  <div class="sec-title">🏆 PORQUE ESCOLHER O LOMBONGOONLINE</div>
+  <div class="sec-sub">O que nos distingue de outros sites</div>
+  <div class="why-grid">
+    <div class="why-card"><span class="why-icon">🇦🇴</span><div class="why-title">Feito para Angola</div><div class="why-desc">Só listamos plataformas compatíveis com Angola e explicamos como sacar em Kwanzas via Binance P2P.</div></div>
+    <div class="why-card"><span class="why-icon">✅</span><div class="why-title">Só Plataformas Legítimas</div><div class="why-desc">Investigamos cada plataforma antes de a listar. Sem esquemas, sem promessas falsas.</div></div>
+    <div class="why-card"><span class="why-icon">📊</span><div class="why-title">Informação Detalhada</div><div class="why-desc">Cada plataforma tem página própria com dados reais: fundação, membros, total pago e métodos de pagamento.</div></div>
+    <div class="why-card"><span class="why-icon">🆓</span><div class="why-title">100% Gratuito</div><div class="why-desc">Nunca cobrámos nada. O site é gratuito e as plataformas também. Não precisas de investir nada.</div></div>
+  </div>
+</div>
+
+<!-- AD 728x90 -->
+<div style="padding:24px;">
+  <div class="ad-box" style="height:90px;max-width:728px;margin:0 auto;">
+    <!-- CÓDIGO 728×90 -->
+    <ins class="monetag-ad" data-zone="10951387" style="display:inline-block;width:728px;height:90px;max-width:100%;"></ins>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div class="f-brand">
+        <span class="f-logo-big">💰 LombongoOnline</span>
+        <p>O melhor guia angolano para ganhar dinheiro online. Plataformas gratuitas, saques em cripto, compatível com Angola.</p>
+      </div>
+      <div class="f-col">
+        <h4>Navegação</h4>
+        <a href="plataformas.html" target="_blank">Plataformas</a>
+        <a href="como-funciona.html" target="_blank">Como Funciona</a>
+        <a href="contacto.html" target="_blank">Contacto</a>
+      </div>
+      <div class="f-col">
+        <h4>Legal</h4>
+        <a href="politica-privacidade.html" target="_blank">Política de Privacidade</a>
+        <a href="termos.html" target="_blank">Termos de Uso</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 LombongoOnline · Luanda, Angola 🇦🇴</span>
+      <span><a href="politica-privacidade.html">Privacidade</a> · <a href="termos.html">Termos</a> · <a href="contacto.html">Contacto</a></span>
+    </div>
+  </div>
+</footer>
+
+<script>
+function acceptCookie(){localStorage.setItem('lo_cookie','1');document.getElementById('cookie-banner').style.display='none';}
+function closeCookie(){document.getElementById('cookie-banner').style.display='none';}
+if(localStorage.getItem('lo_cookie')==='1'){document.getElementById('cookie-banner').style.display='none';}
+</script>
+</body>
+</html>

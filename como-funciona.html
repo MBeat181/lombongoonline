@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Como Funciona – LombongoOnline</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Nunito:wght@400;600;700;900&display=swap" rel="stylesheet">
+<style>
+  :root { --gold:#FFD700; --gold2:#FFA500; --red:#CC0000; --dark:#0a0a0a; --card:#161616; --text:#f0f0f0; --muted:#888; }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  body{background:var(--dark);color:var(--text);font-family:'Nunito',sans-serif;overflow-x:hidden;}
+
+  nav{
+    position:sticky;top:0;z-index:100;background:rgba(10,10,10,0.95);
+    backdrop-filter:blur(12px);border-bottom:1px solid #222;
+    display:flex;align-items:center;justify-content:space-between;padding:14px 24px;
+  }
+  .logo{font-family:'Bebas Neue',sans-serif;font-size:1.8rem;letter-spacing:2px;background:linear-gradient(90deg,var(--gold),var(--gold2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;text-decoration:none;}
+  .logo span{-webkit-text-fill-color:var(--red);}
+  nav a.back{color:var(--muted);text-decoration:none;font-size:0.8rem;font-weight:700;letter-spacing:1px;text-transform:uppercase;transition:color 0.2s;}
+  nav a.back:hover{color:var(--gold);}
+
+  .page-hero{background:linear-gradient(180deg,#0f0f0f,var(--dark));padding:50px 24px 30px;text-align:center;border-bottom:1px solid #1a1a1a;}
+  .page-hero h1{font-family:'Bebas Neue',sans-serif;font-size:clamp(2.5rem,8vw,4rem);letter-spacing:3px;background:linear-gradient(135deg,#FFD700,#FFA500);-webkit-background-clip:text;-webkit-text-fill-color:transparent;}
+  .page-hero p{color:var(--muted);margin-top:8px;}
+
+  .ad-box{background:#111;border:none;border-radius:12px;display:flex;align-items:center;justify-content:center;color:#333;font-size:0.72rem;letter-spacing:2px;text-transform:uppercase;}
+  .ad-leader{height:90px;max-width:728px;margin:24px auto;}
+
+  main{max-width:780px;margin:0 auto;padding:20px 24px 60px;}
+
+  .section-title{font-family:'Bebas Neue',sans-serif;font-size:1.8rem;letter-spacing:2px;color:var(--gold);border-left:4px solid var(--red);padding-left:12px;margin:40px 0 20px;}
+
+  /* STEPS */
+  .steps{display:flex;flex-direction:column;gap:16px;}
+  .step{display:flex;align-items:flex-start;gap:18px;background:var(--card);border:1px solid #1e1e1e;border-radius:14px;padding:22px;transition:border-color 0.3s;}
+  .step:hover{border-color:#333;}
+  .step-num{font-family:'Bebas Neue',sans-serif;font-size:3rem;color:var(--red);line-height:1;min-width:52px;}
+  .step-title{font-weight:900;font-size:1.05rem;margin-bottom:5px;color:var(--gold);}
+  .step-desc{color:#aaa;font-size:0.88rem;line-height:1.6;}
+
+  /* FAQ */
+  .faq{display:flex;flex-direction:column;gap:12px;}
+  .faq-item{background:var(--card);border:1px solid #1e1e1e;border-radius:12px;overflow:hidden;}
+  .faq-q{padding:18px 20px;font-weight:900;font-size:0.95rem;cursor:pointer;display:flex;justify-content:space-between;align-items:center;transition:color 0.2s;user-select:none;}
+  .faq-q:hover{color:var(--gold);}
+  .faq-q span{color:var(--gold);font-size:1.2rem;transition:transform 0.3s;}
+  .faq-a{padding:0 20px;max-height:0;overflow:hidden;transition:max-height 0.4s ease,padding 0.3s;}
+  .faq-a p{color:#aaa;font-size:0.88rem;line-height:1.7;padding-bottom:16px;}
+  .faq-item.open .faq-a{max-height:300px;padding-top:4px;}
+  .faq-item.open .faq-q span{transform:rotate(45deg);}
+
+  /* FLOW */
+  .flow{display:flex;flex-direction:column;gap:8px;}
+  .flow-item{display:flex;align-items:center;gap:14px;background:var(--card);border:1px solid #1e1e1e;border-radius:10px;padding:16px;}
+  .flow-icon{font-size:1.8rem;min-width:44px;text-align:center;}
+  .flow-text{font-size:0.9rem;color:#bbb;line-height:1.5;}
+  .flow-arrow{text-align:center;color:#333;font-size:1.2rem;padding:2px 0;}
+
+  /* CTA */
+  .cta-box{background:linear-gradient(135deg,#1a1500,#0f0f0f);border:1px solid #333;border-radius:16px;padding:32px;text-align:center;margin-top:36px;}
+  .cta-box h3{font-family:'Bebas Neue',sans-serif;font-size:2rem;letter-spacing:2px;margin-bottom:8px;}
+  .cta-box p{color:var(--muted);margin-bottom:20px;font-size:0.9rem;}
+  .btn-gold{display:inline-block;background:linear-gradient(135deg,var(--gold),var(--gold2));color:#000;font-weight:900;font-size:1rem;padding:14px 36px;border-radius:999px;text-decoration:none;box-shadow:0 0 30px rgba(255,165,0,0.3);transition:transform 0.2s,box-shadow 0.2s;}
+  .btn-gold:hover{transform:translateY(-3px);box-shadow:0 0 50px rgba(255,165,0,0.5);}
+
+  footer{background:#0d0d0d;border-top:1px solid #1a1a1a;text-align:center;padding:28px 24px;color:var(--muted);font-size:0.8rem;}
+  .f-logo{font-family:'Bebas Neue',sans-serif;font-size:1.6rem;background:linear-gradient(90deg,var(--gold),var(--gold2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;display:block;margin-bottom:6px;}
+  footer a{color:var(--gold);text-decoration:none;}
+
+  /* APOIA-ME BUTTON BAR */
+  .apoiame-bar{background:#111;border-bottom:1px solid #1a1a1a;padding:8px 24px;display:flex;align-items:center;justify-content:space-between;}
+  .btn-apoiame{display:inline-flex;align-items:center;gap:6px;background:linear-gradient(135deg,#FFD700,#FFA500);color:#000;font-weight:900;font-size:0.72rem;letter-spacing:1px;text-transform:uppercase;padding:6px 15px;border-radius:999px;text-decoration:none;box-shadow:0 0 18px rgba(255,165,0,0.3);transition:transform 0.2s,box-shadow 0.2s;}
+  .btn-apoiame:hover{transform:translateY(-2px);box-shadow:0 0 30px rgba(255,165,0,0.5);}
+</style>
+
+  <!-- MONETAG ONCLICK -->
+  <script>(function(s){s.dataset.zone='10951387',s.src='https://al5sm.com/tag.min.js'})([document.documentElement, document.body].filter(Boolean).pop().appendChild(document.createElement('script')))</script>
+<meta name="referrer" content="no-referrer-when-downgrade" />
+<script>(function(s){s.dataset.zone='10951387',s.src='https://al5sm.com/tag.min.js'})([document.documentElement, document.body].filter(Boolean).pop().appendChild(document.createElement('script')))</script>
+<script src="https://5gvci.com/act/files/tag.min.js?z=10951410" data-cfasync="false" async></script>
+<script>(function(s){s.dataset.zone='10958760',s.src='https://n6wxm.com/vignette.min.js'})([document.documentElement, document.body].filter(Boolean).pop().appendChild(document.createElement('script')))</script>
+<script>(function(s){s.dataset.zone='10985009',s.src='https://nap5k.com/tag.min.js'})([document.documentElement, document.body].filter(Boolean).pop().appendChild(document.createElement('script')))</script>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="logo">Lombongo<span>Online</span></a>
+  <a href="index.html" class="back">← Início</a>
+</nav>
+
+<!-- APOIA-ME BAR -->
+<div class="apoiame-bar">
+  <a href="https://omg10.com/4/10959986" target="_blank" class="btn-apoiame">❤️ Apoia-me 🙏</a>
+  <a href="carteira-digital.html" target="_blank" class="btn-apoiame">💳 Carteira Digital</a>
+</div>
+
+
+<div class="page-hero">
+  <h1>⚡ COMO FUNCIONA</h1>
+  <p>Tudo o que precisas de saber para começar a ganhar dinheiro online</p>
+</div>
+
+<div class="ad-leader ad-box"><ins class="monetag-ad" data-zone="10951387" style="display:inline-block;width:728px;height:90px;max-width:100%;"></ins></div>
+
+<main>
+
+  <div class="section-title">🚀 Passo a Passo</div>
+  <div class="steps">
+    <div class="step">
+      <div class="step-num">01</div>
+      <div>
+        <div class="step-title">Escolhe uma plataforma</div>
+        <div class="step-desc">Vai à página de Plataformas e escolhe a que mais te interessa. Podes começar com 2 ou 3 ao mesmo tempo para maximizar os teus ganhos. Todas são 100% gratuitas.</div>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-num">02</div>
+      <div>
+        <div class="step-title">Cria a tua conta gratuita</div>
+        <div class="step-desc">Clica em "Registar Agora" na plataforma escolhida. Usa um e-mail válido. O registo é sempre gratuito — nunca precisas de pagar para entrar em nenhuma destas plataformas.</div>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-num">03</div>
+      <div>
+        <div class="step-title">Completa tarefas e acumula ganhos</div>
+        <div class="step-desc">Dependendo da plataforma: vê anúncios, faz faucet, completa ofertas, instala jogos, ou simplesmente deixa a app correr em segundo plano. Cada acção traz-te uma pequena recompensa que se vai acumulando.</div>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-num">04</div>
+      <div>
+        <div class="step-title">Atinge o mínimo de saque</div>
+        <div class="step-desc">Cada plataforma tem um valor mínimo para sacar. Alguns são tão baixos quanto $0.10 ou $1. Quando atingires esse valor, podes pedir o teu pagamento.</div>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-num">05</div>
+      <div>
+        <div class="step-title">Saca para a Binance e converte em Kwanzas</div>
+        <div class="step-desc">Os teus ganhos chegam em criptomoeda (Bitcoin, USDT, Litecoin, etc.) para a tua Binance. Depois usas o Binance P2P para vender para Kwanzas e transferir para o teu banco em Angola.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section-title">🔄 O Fluxo do Dinheiro</div>
+  <div class="flow">
+    <div class="flow-item">
+      <div class="flow-icon">💻</div>
+      <div class="flow-text"><strong style="color:#fff;">Plataforma GPT / Faucet</strong><br>Completas tarefas e acumulas ganhos</div>
+    </div>
+    <div class="flow-arrow">↓</div>
+    <div class="flow-item">
+      <div class="flow-icon">💳</div>
+      <div class="flow-text"><strong style="color:#fff;">FaucetPay</strong> (para faucets) ou directamente<br>Os teus ganhos chegam aqui primeiro</div>
+    </div>
+    <div class="flow-arrow">↓</div>
+    <div class="flow-item">
+      <div class="flow-icon">🟡</div>
+      <div class="flow-text"><strong style="color:#fff;">Binance</strong><br>Transferes a tua cripto para a tua conta Binance</div>
+    </div>
+    <div class="flow-arrow">↓</div>
+    <div class="flow-item">
+      <div class="flow-icon">🤝</div>
+      <div class="flow-text"><strong style="color:#fff;">Binance P2P</strong><br>Vendes a cripto para Kwanzas Angolanos (AOA)</div>
+    </div>
+    <div class="flow-arrow">↓</div>
+    <div class="flow-item">
+      <div class="flow-icon">🏦</div>
+      <div class="flow-text"><strong style="color:#fff;">Banco em Angola</strong><br>O dinheiro fica disponível na tua conta bancária</div>
+    </div>
+  </div>
+
+  <div class="ad-box" style="height:250px;max-width:300px;margin:32px auto;"><ins class="monetag-ad" data-zone="10951387" style="display:inline-block;width:300px;height:250px;max-width:100%;"></ins></div>
+
+  <div class="section-title">❓ Perguntas Frequentes</div>
+  <div class="faq">
+    <div class="faq-item">
+      <div class="faq-q">Preciso de pagar para começar? <span>+</span></div>
+      <div class="faq-a"><p>Não. Todas as plataformas listadas no LombongoOnline são 100% gratuitas. Nunca precisas de pagar nada para te registar ou começar a ganhar.</p></div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">Quanto posso ganhar por mês? <span>+</span></div>
+      <div class="faq-a"><p>Depende do tempo e esforço que dedicas. Com várias plataformas em simultâneo, é possível ganhar entre $5 a $50 por mês. Não vais enriquecer da noite para o dia, mas é dinheiro real e legítimo.</p></div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">Funciona em Angola? <span>+</span></div>
+      <div class="faq-a"><p>Sim! A maioria das plataformas listadas funciona em Angola. Para sacar, usamos a Binance P2P que converte cripto em Kwanzas — sem precisar de PayPal ou cartão internacional.</p></div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">O que é o FaucetPay? <span>+</span></div>
+      <div class="faq-a"><p>O FaucetPay é uma micro-carteira de criptomoedas que funciona como intermediário entre os faucets e a tua carteira principal na Binance. A maioria dos faucets envia os ganhos para o FaucetPay porque os valores são muito pequenos para enviar directamente.</p></div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">Como funciona o Binance P2P? <span>+</span></div>
+      <div class="faq-a"><p>O Binance P2P é um mercado onde compradores e vendedores de cripto negociam directamente. Tu vendes a tua cripto a alguém em Angola que te paga em Kwanzas por transferência bancária. É seguro porque a Binance actua como garantidor da transacção.</p></div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">Preciso de uma carteira cripto? <span>+</span></div>
+      <div class="faq-a"><p>Sim, mas é simples. Só precisas de uma conta na Binance (gratuita) e, para faucets, uma conta no FaucetPay (também gratuita). Ambas se criam em menos de 5 minutos com o teu e-mail.</p></div>
+    </div>
+  </div>
+
+  <div class="cta-box">
+    <h3>💰 Pronto para começar?</h3>
+    <p>Vê todas as plataformas disponíveis e escolhe a tua favorita. É grátis!</p>
+    <a href="plataformas.html" target="_blank" class="btn-gold">🚀 Ver Plataformas</a>
+  </div>
+
+</main>
+
+<footer>
+  <span class="f-logo">LombongoOnline</span>
+  <p><a href="index.html">Início</a> · <a href="plataformas.html" target="_blank">Plataformas</a></p>
+  <p style="margin-top:10px;font-size:0.7rem;color:#333;">© 2026 LombongoOnline · Luanda, Angola</p>
+</footer>
+
+<script>
+document.querySelectorAll('.faq-q').forEach(q => {
+  q.addEventListener('click', () => {
+    const item = q.parentElement;
+    const wasOpen = item.classList.contains('open');
+    document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+    if(!wasOpen) item.classList.add('open');
+  });
+});
+</script>
+</body>
+</html>
